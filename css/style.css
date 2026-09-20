@@ -219,7 +219,7 @@ img {
     margin-bottom: 10px;
 }
 
-/* ✅ BARU: Styling untuk Stats (8+ Years & 2 Companies) */
+/* Stats Section */
 .hero-stats {
     display: flex;
     gap: 60px;
@@ -510,15 +510,138 @@ img {
    10. FOOTER
    ========================================= */
 .footer {
-    padding: 30px 0;
-    text-align: center;
+    background-color: var(--bg-darker);
     border-top: 1px solid var(--border);
+    padding: 60px 0 30px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-brand .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.footer-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 350px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-links ul,
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.footer-contact ul li {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer-contact ul li i {
+    color: var(--accent);
+    font-size: 1rem;
+    margin-top: 3px;
+    width: 18px;
+}
+
+.footer-contact ul li a {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.footer-contact ul li a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-bottom-content p {
     color: var(--text-muted);
     font-size: 0.9rem;
 }
 
-.footer i {
+.footer-credit {
+    font-size: 0.85rem;
+}
+
+.footer-credit i {
     color: var(--accent);
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+    transform: translateY(-3px);
 }
 
 /* =========================================
@@ -543,6 +666,15 @@ img {
 
     .stat-number {
         font-size: 2.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-brand {
+        grid-column: 1 / -1;
     }
 }
 
@@ -702,6 +834,40 @@ img {
     .btn {
         width: 100%;
     }
+
+    /* Footer Mobile */
+    .footer {
+        padding: 50px 0 25px;
+        margin-top: 40px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-bottom: 40px;
+    }
+    
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-desc {
+        max-width: 100%;
+    }
+    
+    .footer-links ul li a:hover {
+        padding-left: 0;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-social {
+        order: -1;
+    }
 }
 
 /* =========================================
@@ -751,5 +917,33 @@ img {
     
     .timeline-content ul {
         padding-left: 15px;
+    }
+
+    .footer-brand .logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer-desc {
+        font-size: 0.9rem;
+    }
+    
+    .footer-links h4,
+    .footer-contact h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-contact ul li,
+    .footer-links ul li a {
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom-content p {
+        font-size: 0.85rem;
+    }
+    
+    .footer-social a {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
     }
 }
