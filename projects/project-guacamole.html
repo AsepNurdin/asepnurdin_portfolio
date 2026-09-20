@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Report: Apache Guacamole Deployment | Asep Nurdin</title>
+    <meta name="description" content="Technical documentation for Apache Guacamole clientless remote desktop gateway implementation.">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-detail-header">
+        <div class="container">
+            <a href="project-remote-access.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Remote Access Projects
+            </a>
+            <div class="header-meta">
+                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2023 - Present</span>
+                <span class="meta-tag"><i class="fas fa-building"></i> PT Autocomp Systems Indonesia</span>
+                <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
+            </div>
+            <h1 class="project-title">Apache Guacamole Deployment & Clientless Remote Gateway</h1>
+            <p class="project-subtitle">
+                Comprehensive technical documentation on the implementation of Apache Guacamole as a secure, clientless remote desktop gateway supporting RDP, SSH, and VNC protocols through a web browser.
+            </p>
+        </div>
+    </header>
+
+    <!-- Document Content -->
+    <section class="project-detail-content">
+        <div class="container">
+            
+            <!-- Document Info Table -->
+            <div class="doc-info-container">
+                <div class="doc-info-grid">
+                    <div class="doc-info-item"><strong>Project Name:</strong> Remote Access Gateway</div>
+                    <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
+                    <div class="doc-info-item"><strong>Role:</strong> IT Infrastructure & Security Specialist</div>
+                    <div class="doc-info-item"><strong>Version:</strong> 1.0</div>
+                </div>
+            </div>
+
+            <!-- 1. Executive Summary -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">01.</span> Executive Summary</h2>
+                <p>
+                    To provide secure remote access to the enterprise infrastructure without requiring client software installation, Apache Guacamole was deployed as a clientless remote desktop gateway. This solution enables IT administrators and authorized users to access Windows (RDP), Linux (SSH), and legacy systems (VNC) directly through a web browser with HTML5 support. The implementation significantly improved operational efficiency while maintaining strict security controls and audit trails.
+                </p>
+            </div>
+
+            <!-- 2. Architecture Overview -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">02.</span> Architecture Overview</h2>
+                <p>
+                    The Apache Guacamole deployment consists of two main components: guacd (the proxy daemon that handles protocol translation) and the web application (served via Tomcat). The solution is placed behind an Nginx reverse proxy with SSL/TLS termination to ensure encrypted communication. User authentication is integrated with Active Directory (LDAP) for centralized identity management.
+                </p>
+                
+                <figure class="tech-figure">
+                    <img src="images/guacamole-architecture.png" alt="Apache Guacamole Architecture Diagram">
+                    <figcaption>Figure 1: Apache Guacamole architecture showing Nginx reverse proxy, Tomcat application server, guacd daemon, and target systems.</figcaption>
+                </figure>
+            </div>
+
+            <!-- 3. Technical Implementation -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">03.</span> Technical Implementation</h2>
+                
+                <h3 class="sub-heading">3.1 Server Preparation & Dependencies</h3>
+                <p>
+                    The Guacamole server was deployed on Ubuntu 20.04 LTS with the following core dependencies: Apache Tomcat 9, guacd (Guacamole proxy daemon), and required libraries including libguac-client-rdp, libguac-client-ssh, and libguac-client-vnc for protocol support.
+                </p>
+
+                <h3 class="sub-heading">3.2 guacd Configuration</h3>
+                <p>
+                    The guacd proxy daemon was configured to handle protocol translation between the web client and target systems. Custom configuration was applied for session recording, clipboard sharing restrictions, and connection timeout policies to enhance security.
+                </p>
+
+                <figure class="tech-figure">
+                    <img src="images/guacd-configuration.png" alt="guacd Configuration">
+                    <figcaption>Figure 2: guacd daemon configuration showing protocol handlers and security parameters.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">3.3 Nginx Reverse Proxy with SSL/TLS</h3>
+                <p>
+                    Nginx was configured as a reverse proxy in front of Tomcat to provide SSL/TLS termination. Let's Encrypt certificates were used for HTTPS encryption. The configuration includes security headers, rate limiting, and WebSocket support required for Guacamole's real-time communication.
+                </p>
+
+                <h3 class="sub-heading">3.4 Active Directory Integration</h3>
+                <p>
+                    User authentication was integrated with the company's Active Directory via LDAP extension. This enables single sign-on (SSO) capabilities and centralized user management. Role-based access control (RBAC) was implemented to restrict access to specific connections based on user groups.
+                </p>
+
+                <figure class="tech-figure">
+                    <img src="images/guacamole-ldap-integration.png" alt="LDAP Integration">
+                    <figcaption>Figure 3: Active Directory LDAP integration configuration for centralized authentication and authorization.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">3.5 Connection Configuration</h3>
+                <p>
+                    Remote connections were configured for various target systems:
+                </p>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fab fa-windows"></i>
+                        <div>
+                            <strong>Windows Servers (RDP)</strong>
+                            <p>Remote Desktop Protocol connections with NLA (Network Level Authentication) enabled for secure Windows server access.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fab fa-linux"></i>
+                        <div>
+                            <strong>Linux Servers (SSH)</strong>
+                            <p>Secure Shell connections with key-based authentication support and terminal recording capabilities.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-desktop"></i>
+                        <div>
+                            <strong>Legacy Systems (VNC)</strong>
+                            <p>Virtual Network Computing connections for legacy systems that don't support RDP or SSH protocols.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <h3 class="sub-heading">3.6 Security Hardening</h3>
+                <p>
+                    Multiple security layers were implemented: Two-factor authentication (2FA) via TOTP, IP-based access restrictions, session recording for audit purposes, clipboard and file transfer restrictions, and automatic session timeout for inactive connections.
+                </p>
+            </div>
+
+            <!-- 4. Results & Impact -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">04.</span> Results & Business Impact</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-globe accent"></i> Clientless Access</h3>
+                        <p>Users can access any remote system through a web browser without installing additional client software.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-shield-alt accent"></i> Enhanced Security</h3>
+                        <p>Centralized access control with LDAP integration, 2FA, and session recording for compliance auditing.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-clock accent"></i> Improved Efficiency</h3>
+                        <p>IT administrators can manage 100+ servers from a single web interface with organized connection groups.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-file-audio accent"></i> Audit Compliance</h3>
+                        <p>All remote sessions are recorded and logged, meeting internal security audit and compliance requirements.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } 
+            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+        });
+    </script>
+</body>
+</html>
