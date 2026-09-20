@@ -1,38 +1,37 @@
 /**
- * Force Justify Script
- * Memastikan semua subtitle dan paragraph di project detail page
- * menggunakan text-align: justify
+ * Universal Force Justify Script
+ * Menerapkan text-align: justify ke semua deskripsi
+ * di halaman utama dan project pages
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Force justify untuk subtitle di header
-    const subtitles = document.querySelectorAll('.project-subtitle');
-    subtitles.forEach(function(subtitle) {
-        subtitle.style.textAlign = 'justify';
-        subtitle.style.textJustify = 'inter-word';
-        subtitle.style.textAlignLast = 'left';
-    });
+    // Helper function untuk apply justify
+    function applyJustify(selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(function(el) {
+            el.style.textAlign = 'justify';
+            el.style.textJustify = 'inter-word';
+            el.style.textAlignLast = 'left';
+        });
+    }
     
-    // Force justify untuk semua paragraph di detail section
-    const detailParagraphs = document.querySelectorAll('.detail-section p');
-    detailParagraphs.forEach(function(p) {
-        p.style.textAlign = 'justify';
-        p.style.textJustify = 'inter-word';
-    });
+    // === HALAMAN UTAMA (index.html) ===
+    applyJustify('.hero-desc');
+    applyJustify('.about-text p');
+    applyJustify('.skill-card p');
+    applyJustify('.timeline-content p');
+    applyJustify('.timeline-content li');
+    applyJustify('.contact-desc');
+    applyJustify('.section p');
     
-    // Force justify untuk paragraph di list items
-    const listParagraphs = document.querySelectorAll('.detail-list li p');
-    listParagraphs.forEach(function(p) {
-        p.style.textAlign = 'justify';
-        p.style.textJustify = 'inter-word';
-    });
+    // === PROJECT PAGES ===
+    applyJustify('.project-subtitle');
+    applyJustify('.page-subtitle');
+    applyJustify('.detail-section p');
+    applyJustify('.detail-list li p');
+    applyJustify('.result-card p');
+    applyJustify('.vendor-card > p');
+    applyJustify('.project-content p');
     
-    // Force justify untuk paragraph di result cards
-    const resultParagraphs = document.querySelectorAll('.result-card p');
-    resultParagraphs.forEach(function(p) {
-        p.style.textAlign = 'justify';
-        p.style.textJustify = 'inter-word';
-    });
-    
-    console.log('Force Justify: Applied to all project detail elements');
+    console.log('Force Justify: Applied to all descriptions');
 });
