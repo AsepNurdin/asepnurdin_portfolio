@@ -142,7 +142,7 @@ img {
     padding: 140px 0 80px;
     background: var(--bg-darker);
     border-bottom: 1px solid var(--border);
-    text-align: left; /* ✅ Rata kiri */
+    text-align: left;
 }
 
 .back-link {
@@ -165,16 +165,16 @@ img {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 15px;
-    letter-spacing: -1px; /* ✅ Kurangi dari -2px */
-    line-height: 1.05;    /* ✅ Kurangi dari 1.1 agar lebih rapat */
+    letter-spacing: -1px;
+    line-height: 1.05;
     max-width: 900px;
-    color: var(--text-primary); /* ✅ Pastikan putih */
+    color: var(--text-primary);
 }
 
 .page-subtitle {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    max-width: 700px; /* ✅ Batasi lebar subtitle */
+    max-width: 700px;
     line-height: 1.7;
 }
 
@@ -344,8 +344,8 @@ img {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 15px;
-    letter-spacing: -1px;     /* ✅ Kurangi dari -1.5px */
-    line-height: 1.05;        /* ✅ Kurangi dari 1.1 */
+    letter-spacing: -1px;
+    line-height: 1.05;
     color: var(--text-primary);
 }
 
@@ -354,8 +354,8 @@ img {
     color: var(--text-secondary);
     max-width: 800px;
     line-height: 1.7;
-    text-align: justify;        /* ✅ Tambahkan ini */
-    text-justify: inter-word;   /* ✅ Tambahkan ini */
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .project-detail-content {
@@ -387,8 +387,8 @@ img {
     font-size: 1.05rem;
     line-height: 1.8;
     max-width: 900px;
-    text-align: justify;        /* ✅ Tambahkan ini */
-    text-justify: inter-word;   /* ✅ Tambahkan ini untuk spacing yang lebih baik */
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* Sub Headings (for Technical Doc) */
@@ -432,8 +432,8 @@ img {
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-    text-align: justify;        /* ✅ Tambahkan ini */
-    text-justify: inter-word;   /* ✅ Tambahkan ini */
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* Tech Stack Grid */
@@ -503,6 +503,8 @@ img {
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* =========================================
