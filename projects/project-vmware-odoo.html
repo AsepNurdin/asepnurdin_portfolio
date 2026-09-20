@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Report: VMware vCenter for Odoo ERP | Asep Nurdin</title>
+    <meta name="description" content="Technical documentation for VMware vSphere infrastructure deployment for Odoo ERP system.">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-detail-header">
+        <div class="container">
+            <a href="project-virtualization.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Virtualization Projects
+            </a>
+            <div class="header-meta">
+                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2023 - Present</span>
+                <span class="meta-tag"><i class="fas fa-building"></i> PT Autocomp Systems Indonesia</span>
+                <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
+            </div>
+            <h1 class="project-title">VMware vCenter Infrastructure & <span class="accent">Odoo ERP System Deployment</span></h1>
+            <p class="project-subtitle">
+                Comprehensive technical documentation on enterprise virtualization infrastructure using VMware vSphere and vCenter for critical Odoo ERP system with high availability and disaster recovery.
+            </p>
+        </div>
+    </header>
+
+    <!-- Document Content -->
+    <section class="project-detail-content">
+        <div class="container">
+            
+            <!-- Document Info Table -->
+            <div class="doc-info-container">
+                <div class="doc-info-grid">
+                    <div class="doc-info-item"><strong>Project Name:</strong> Odoo ERP Virtualization</div>
+                    <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
+                    <div class="doc-info-item"><strong>Role:</strong> IT Infrastructure & Security Specialist</div>
+                    <div class="doc-info-item"><strong>Version:</strong> 1.0</div>
+                </div>
+            </div>
+
+            <!-- 1. Executive Summary -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">01.</span> Executive Summary</h2>
+                <p>
+                    To support the deployment of Odoo ERP system as the company's core business application, a robust and highly available virtualization infrastructure was implemented using VMware vSphere and vCenter Server. This project involved the design and deployment of a multi-node ESXi cluster with centralized management through vCenter, ensuring 99.9% uptime for critical business operations including inventory management, accounting, HR, and manufacturing modules.
+                </p>
+            </div>
+
+            <!-- 2. Infrastructure Architecture -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">02.</span> Infrastructure Architecture</h2>
+                <p>
+                    The Odoo ERP infrastructure was designed with enterprise-grade reliability in mind. The architecture consists of a 3-node VMware ESXi cluster managed by vCenter Server 7.0, with shared storage (SAN/NFS) for VM files and vMotion capabilities. The Odoo application server, PostgreSQL database, and file storage were deployed as separate virtual machines to ensure optimal performance and easier backup management.
+                </p>
+                
+                <figure class="tech-figure">
+                    <img src="images/vmware-odoo-architecture.png" alt="VMware vCenter Odoo Architecture">
+                    <figcaption>Figure 1: VMware vSphere architecture showing ESXi cluster, vCenter management, and Odoo ERP VM deployment.</figcaption>
+                </figure>
+            </div>
+
+            <!-- 3. Technical Implementation -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">03.</span> Technical Implementation</h2>
+                
+                <h3 class="sub-heading">3.1 vCenter Server Deployment</h3>
+                <p>
+                    VMware vCenter Server Appliance (VCSA) 7.0 was deployed as the centralized management platform for the ESXi cluster. vCenter provides essential features including vMotion, Distributed Resource Scheduler (DRS), High Availability (HA), and centralized monitoring of all virtual infrastructure components.
+                </p>
+
+                <figure class="tech-figure">
+                    <img src="images/vcenter-deployment.png" alt="vCenter Server Deployment">
+                    <figcaption>Figure 2: vCenter Server Appliance deployment and ESXi cluster configuration dashboard.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">3.2 ESXi Cluster Configuration</h3>
+                <p>
+                    Three physical servers were configured as ESXi 7.0 hosts and added to the vCenter inventory. The cluster was configured with DRS (Distributed Resource Scheduler) for automatic load balancing and VMware HA (High Availability) for automatic VM restart in case of host failure. Network configuration included vSphere Standard Switches with VLAN tagging for network segmentation.
+                </p>
+
+                <h3 class="sub-heading">3.3 Odoo ERP VM Deployment</h3>
+                <p>
+                    The Odoo ERP system was deployed across three virtual machines:
+                </p>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-server"></i>
+                        <div>
+                            <strong>Odoo Application Server</strong>
+                            <p>Ubuntu 20.04 LTS with Odoo 15, 4 vCPU, 8GB RAM, 100GB storage</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-database"></i>
+                        <div>
+                            <strong>PostgreSQL Database Server</strong>
+                            <p>Ubuntu 20.04 LTS with PostgreSQL 13, 4 vCPU, 16GB RAM, 200GB SSD storage</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-folder"></i>
+                        <div>
+                            <strong>File Storage Server</strong>
+                            <p>Ubuntu 20.04 LTS with Samba/NFS, 2 vCPU, 4GB RAM, 500GB storage for documents</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <figure class="tech-figure">
+                    <img src="images/odoo-vm-configuration.png" alt="Odoo VM Configuration">
+                    <figcaption>Figure 3: Odoo ERP virtual machines configuration and resource allocation in vCenter.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">3.4 Storage Configuration</h3>
+                <p>
+                    Shared storage was implemented using NFS datastore connected to all ESXi hosts. This enables vMotion functionality and ensures VM files are accessible from any host in the cluster. Regular storage performance monitoring was configured to prevent I/O bottlenecks.
+                </p>
+
+                <h3 class="sub-heading">3.5 Backup & Disaster Recovery</h3>
+                <p>
+                    Automated backup solution was implemented using Veeam Backup & Replication. Daily incremental backups and weekly full backups were configured for all Odoo-related VMs. Additionally, VMware snapshots were taken before major system updates. Disaster recovery procedures were documented and tested quarterly.
+                </p>
+            </div>
+
+            <!-- 4. High Availability & Performance -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">04.</span> High Availability & Performance Optimization</h2>
+                <p>
+                    VMware HA was configured with admission control policy to ensure sufficient resources for VM restart. DRS was set to fully automated mode with conservative migration threshold. Resource pools were created to prioritize Odoo database server resources. Storage I/O Control was enabled to prevent storage contention.
+                </p>
+            </div>
+
+            <!-- 5. Results & Impact -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">05.</span> Results & Business Impact</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-chart-line accent"></i> 99.9% Uptime</h3>
+                        <p>Odoo ERP system achieved 99.9% availability with VMware HA ensuring automatic recovery from host failures.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-tachometer-alt accent"></i> 40% Performance Improvement</h3>
+                        <p>Virtualization with optimized resource allocation improved Odoo response time by 40% compared to physical server.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-undo accent"></i> Zero Downtime Maintenance</h3>
+                        <p>vMotion enabled hardware maintenance without service interruption, allowing updates during business hours.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-shield-alt accent"></i> Enhanced Disaster Recovery</h3>
+                        <p>Automated backups and documented DR procedures reduced RTO (Recovery Time Objective) to under 4 hours.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } 
+            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+        });
+    </script>
+</body>
+</html>
