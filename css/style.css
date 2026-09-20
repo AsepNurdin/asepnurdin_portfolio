@@ -216,8 +216,6 @@ img {
     max-width: 600px;
     line-height: 1.7;
     margin-bottom: 10px;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 .hero-stats {
@@ -323,8 +321,6 @@ img {
     line-height: 1.8;
     margin-bottom: 20px;
     max-width: 750px;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* =========================================
@@ -366,8 +362,6 @@ img {
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* =========================================
@@ -430,8 +424,6 @@ img {
 .timeline-content ul li {
     margin-bottom: 8px;
     line-height: 1.6;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* =========================================
@@ -471,8 +463,6 @@ img {
 
 .cert-card p {
     color: var(--text-secondary);
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* =========================================
@@ -546,8 +536,6 @@ img {
     max-width: 600px;
     margin-bottom: 30px;
     line-height: 1.7;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 .contact-links {
@@ -935,84 +923,29 @@ img {
 }
 
 /* =========================================
-   14. FORCE JUSTIFY - ALL DESCRIPTIONS
+   14. UNIVERSAL JUSTIFY - ALL SECTIONS (FIXED)
    ========================================= */
+
+/* Hapus semua max-width yang membatasi */
+.hero-desc,
+.about-text p,
+.skill-card p,
+.timeline-content ul li,
+.contact-desc,
+.cert-card p,
+.timeline,
+.timeline-content {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* Apply justify ke semua deskripsi */
 .hero-desc,
 .about-text p,
 .skill-card p,
 .timeline-content ul li,
 .contact-desc,
 .cert-card p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    text-align-last: left !important;
-}
-
-/* =========================================
-   FORCE ABOUT ME FULL WIDTH & JUSTIFY
-   ========================================= */
-.about-text {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
-.about-text p {
-    max-width: 100% !important;
-    width: 100% !important;
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    text-align-last: left !important;
-    hyphens: auto !important;
-    -webkit-hyphens: auto !important;
-    -ms-hyphens: auto !important;
-}
-
-/* =========================================
-   FORCE CONTACT SECTION FULL WIDTH & JUSTIFY
-   ========================================= */
-.contact-desc {
-    max-width: 100% !important;
-    width: 100% !important;
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    text-align-last: left !important;
-    hyphens: auto !important;
-    -webkit-hyphens: auto !important;
-    -ms-hyphens: auto !important;
-}
-
-/* =========================================
-   FORCE WORK EXPERIENCE FULL WIDTH & JUSTIFY
-   ========================================= */
-.timeline {
-    max-width: 100% !important;
-}
-
-.timeline-content {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
-.timeline-content ul {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
-.timeline-content ul li {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    text-align-last: left !important;
-    hyphens: auto !important;
-    -webkit-hyphens: auto !important;
-    -ms-hyphens: auto !important;
-}
-
-/* =========================================
-   FORCE HERO DESC FULL WIDTH & JUSTIFY
-   ========================================= */
-.hero-desc {
-    max-width: 100% !important;
-    width: 100% !important;
     text-align: justify !important;
     text-justify: inter-word !important;
     text-align-last: left !important;
