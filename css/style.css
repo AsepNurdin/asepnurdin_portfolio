@@ -967,3 +967,12 @@ body .hero .hero-content .hero-desc {
     -webkit-hyphens: auto !important;
     -ms-hyphens: auto !important;
 }
+
+/* =========================================
+   EXCLUDE SKILL CARD FROM JUSTIFY
+   ========================================= */
+.skill-card p {
+    text-align: left !important;
+    text-justify: none !important;
+    text-align-last: left !important;
+}
