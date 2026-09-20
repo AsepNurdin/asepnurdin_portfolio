@@ -216,6 +216,8 @@ img {
     max-width: 600px;
     line-height: 1.7;
     margin-bottom: 10px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .hero-stats {
@@ -321,6 +323,8 @@ img {
     line-height: 1.8;
     margin-bottom: 20px;
     max-width: 750px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* =========================================
@@ -362,6 +366,8 @@ img {
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* =========================================
@@ -424,6 +430,8 @@ img {
 .timeline-content ul li {
     margin-bottom: 8px;
     line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* =========================================
@@ -463,10 +471,12 @@ img {
 
 .cert-card p {
     color: var(--text-secondary);
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* =========================================
-   CERTIFICATIONS WITH PDF LINKS (BARU)
+   CERTIFICATIONS WITH PDF LINKS
    ========================================= */
 .cert-link {
     text-decoration: none;
@@ -536,6 +546,8 @@ img {
     max-width: 600px;
     margin-bottom: 30px;
     line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .contact-links {
@@ -664,7 +676,6 @@ img {
         padding: 0 18px;
     }
     
-    /* ✅ NAVBAR MOBILE - DIPERBAIKI */
     .hamburger {
         display: block;
     }
@@ -674,14 +685,14 @@ img {
         top: 0;
         right: -100%;
         flex-direction: column;
-        align-items: flex-start; /* ✅ Rata kiri */
+        align-items: flex-start;
         justify-content: flex-start;
         background: var(--bg-secondary);
         width: 70%;
         max-width: 280px;
         height: 100vh;
-        padding: 80px 25px 30px; /* ✅ Padding lebih rapat */
-        gap: 0; /* ✅ Hapus gap, pakai border */
+        padding: 80px 25px 30px;
+        gap: 0;
         transition: right 0.3s ease;
         border-left: 1px solid var(--border);
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
@@ -694,7 +705,7 @@ img {
     
     .nav-links li {
         width: 100%;
-        border-bottom: 1px solid var(--border); /* ✅ Separator antar menu */
+        border-bottom: 1px solid var(--border);
     }
     
     .nav-links li:last-child {
@@ -702,10 +713,10 @@ img {
     }
     
     .nav-links a {
-        font-size: 1rem; /* ✅ Ukuran font lebih kecil */
-        padding: 16px 0; /* ✅ Padding vertikal yang pas */
+        font-size: 1rem;
+        padding: 16px 0;
         display: block;
-        text-align: left; /* ✅ Rata kiri */
+        text-align: left;
         color: var(--text-secondary);
     }
     
@@ -714,11 +725,11 @@ img {
     }
     
     .btn-nav {
-        width: auto; /* ✅ Tidak full width */
+        width: auto;
         text-align: left;
         margin-top: 0;
         padding: 16px 0;
-        border: none; /* ✅ Hapus border tombol */
+        border: none;
         color: var(--accent) !important;
         font-weight: 600;
     }
@@ -912,7 +923,6 @@ img {
         font-size: 0.9rem;
     }
     
-    /* Menu mobile lebih kecil lagi */
     .nav-links {
         width: 75%;
         padding: 70px 20px 30px;
@@ -922,4 +932,18 @@ img {
         font-size: 0.95rem;
         padding: 14px 0;
     }
+}
+
+/* =========================================
+   14. FORCE JUSTIFY - ALL DESCRIPTIONS
+   ========================================= */
+.hero-desc,
+.about-text p,
+.skill-card p,
+.timeline-content ul li,
+.contact-desc,
+.cert-card p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    text-align-last: left !important;
 }
