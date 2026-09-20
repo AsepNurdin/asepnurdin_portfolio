@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Access & Gateway | Asep Nurdin</title>
+    <meta name="description" content="Secure remote access solutions using Apache Guacamole and enterprise gateway implementations.">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="projects-header">
+        <div class="container">
+            <a href="index.html" class="back-link" style="margin-bottom: 20px; display: inline-flex;">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+            <h1 class="page-title">Remote Access & Gateway</h1>
+            <p class="page-subtitle">
+                Secure remote access solutions and gateway implementations for enterprise infrastructure management
+            </p>
+        </div>
+    </header>
+
+    <!-- Remote Access Projects Grid -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-grid">
+
+                <!-- Apache Guacamole (AKTIF) -->
+                <article class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Apache Guacamole Deployment</h3>
+                        <p>Clientless remote desktop gateway implementation using Apache Guacamole with RDP, SSH, and VNC protocol support.</p>
+                        <div class="project-tags">
+                            <span class="tag">Apache Guacamole</span>
+                            <span class="tag">RDP</span>
+                            <span class="tag">SSH</span>
+                            <span class="tag">Nginx Reverse Proxy</span>
+                        </div>
+                        <a href="project-guacamole.html" class="project-link">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- VPN Implementation (COMING SOON) -->
+                <article class="project-card coming-soon">
+                    <div class="project-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>VPN Implementation</h3>
+                        <p>Site-to-site and remote access VPN deployment using OpenVPN and WireGuard for secure network connectivity.</p>
+                        <div class="project-tags">
+                            <span class="tag">OpenVPN</span>
+                            <span class="tag">WireGuard</span>
+                            <span class="tag">Site-to-Site</span>
+                            <span class="tag">Remote Access</span>
+                        </div>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                </article>
+
+                <!-- Jump Server / Bastion Host (COMING SOON) -->
+                <article class="project-card coming-soon">
+                    <div class="project-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Jump Server / Bastion Host</h3>
+                        <p>Secure bastion host implementation for controlled access to internal network resources with audit logging.</p>
+                        <div class="project-tags">
+                            <span class="tag">Bastion Host</span>
+                            <span class="tag">Audit Logging</span>
+                            <span class="tag">Access Control</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } 
+            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+        });
+    </script>
+</body>
+</html>
