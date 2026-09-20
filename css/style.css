@@ -980,3 +980,29 @@ img {
     -webkit-hyphens: auto !important;
     -ms-hyphens: auto !important;
 }
+
+/* =========================================
+   FORCE WORK EXPERIENCE FULL WIDTH & JUSTIFY
+   ========================================= */
+.timeline {
+    max-width: 100% !important;
+}
+
+.timeline-content {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.timeline-content ul {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.timeline-content ul li {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    text-align-last: left !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
+}
