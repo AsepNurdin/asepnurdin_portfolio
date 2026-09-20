@@ -1,1 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortigate 200F Implementation | Asep Nurdin</title>
+    <meta name="description" content="Detail project implementasi dan optimasi keamanan jaringan menggunakan Fortigate 200F.">
+    
+    <!-- PATH DIPERBAIKI: css/projects.css (bukan ../css/projects.css) -->
+    <link rel="stylesheet" href="css/projects.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-detail-header">
+        <div class="container">
+            <!-- PATH DIPERBAIKI: kembali ke project-firewall.html -->
+            <a href="project-firewall.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Firewall Projects
+            </a>
+            <div class="header-meta">
+                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2023 - Present</span>
+                <span class="meta-tag"><i class="fas fa-building"></i> PT Autocomp Systems Indonesia</span>
+                <span class="meta-tag"><i class="fas fa-shield-alt"></i> Network Security</span>
+            </div>
+            <h1 class="project-title">Fortigate 200F Implementation & <span class="accent">Network Security Optimization</span></h1>
+            <p class="project-subtitle">
+                Perancangan, implementasi, dan optimasi keamanan perimeter jaringan perusahaan menggunakan Fortinet Fortigate 200F untuk memastikan konektivitas yang aman, stabil, dan berkinerja tinggi.
+            </p>
+        </div>
+    </header>
+
+    <!-- Project Content -->
+    <section class="project-detail-content">
+        <div class="container">
+            
+            <!-- Overview -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">01.</span> Project Overview</h2>
+                <p>
+                    Sebagai bagian dari upaya peningkatan keamanan siber perusahaan, saya ditugaskan untuk mengimplementasikan dan mengelola firewall Fortigate 200F. Project ini bertujuan untuk memperkuat perimeter jaringan, mengontrol lalu lintas data secara ketat, serta mengimplementasikan fitur Unified Threat Management (UTM) untuk mendeteksi dan memitigasi ancaman siber secara real-time.
+                </p>
+            </div>
+
+            <!-- Key Responsibilities -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">02.</span> Key Responsibilities & Implementation</h2>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Initial Setup & Deployment</strong>
+                            <p>Melakukan instalasi fisik, konfigurasi awal (HA, Interface, VLAN), dan integrasi Fortigate 200F ke dalam infrastruktur jaringan yang sudah ada.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Security Policies & NAT Configuration</strong>
+                            <p>Merancang dan menerapkan Firewall Policies yang ketat, termasuk konfigurasi NAT (SNAT/DNAT) dan Virtual IP (VIP) untuk mempublikasikan layanan internal secara aman.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Unified Threat Management (UTM)</strong>
+                            <p>Mengaktifkan dan menyetel profil keamanan seperti Intrusion Prevention System (IPS), Web Filtering, Application Control, dan Antivirus untuk memblokir ancaman tingkat lanjut.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>High Availability (HA) Setup</strong>
+                            <p>Mengkonfigurasi mode Active-Passive HA untuk memastikan redundansi sistem dan meminimalkan downtime jika terjadi kegagalan perangkat.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>VPN Configuration (IPSec & SSL)</strong>
+                            <p>Membangun tunnel IPSec untuk koneksi site-to-site antar cabang, serta mengonfigurasi SSL VPN untuk akses remote karyawan yang aman.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Monitoring & Troubleshooting</strong>
+                            <p>Melakukan monitoring log trafik, troubleshooting isu konektivitas, dan penyesuaian kebijakan keamanan berdasarkan hasil analisis ancaman.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">03.</span> Technologies & Tools</h2>
+                <div class="tech-stack-grid">
+                    <div class="tech-item"><i class="fas fa-shield-alt"></i> Fortigate 200F</div>
+                    <div class="tech-item"><i class="fas fa-cogs"></i> FortiOS</div>
+                    <div class="tech-item"><i class="fas fa-network-wired"></i> VLAN & Routing</div>
+                    <div class="tech-item"><i class="fas fa-lock"></i> IPSec / SSL VPN</div>
+                    <div class="tech-item"><i class="fas fa-bug"></i> IPS & Web Filter</div>
+                    <div class="tech-item"><i class="fas fa-server"></i> High Availability (HA)</div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">04.</span> Results & Impact</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-shield-alt accent"></i> Enhanced Security</h3>
+                        <p>Berkurangnya risiko serangan siber dari luar berkat penerapan UTM dan kebijakan firewall yang ketat.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-tachometer-alt accent"></i> High Availability</h3>
+                        <p>Terjaminnya uptime jaringan perusahaan dengan implementasi HA, meminimalkan risiko downtime.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-eye accent"></i> Better Visibility</h3>
+                        <p>Peningkatan visibilitas terhadap lalu lintas jaringan dan aplikasi yang digunakan oleh karyawan.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript untuk Mobile Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
