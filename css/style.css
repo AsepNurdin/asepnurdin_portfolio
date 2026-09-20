@@ -929,7 +929,6 @@ img {
 /* Hapus semua max-width yang membatasi */
 .hero-desc,
 .about-text p,
-.skill-card p,
 .timeline-content ul li,
 .contact-desc,
 .cert-card p,
@@ -939,10 +938,9 @@ img {
     width: 100% !important;
 }
 
-/* Apply justify ke semua deskripsi */
+/* Apply justify ke deskripsi panjang (KECUALI skill-card) */
 .hero-desc,
 .about-text p,
-.skill-card p,
 .timeline-content ul li,
 .contact-desc,
 .cert-card p {
@@ -954,18 +952,11 @@ img {
     -ms-hyphens: auto !important;
 }
 
-/* =========================================
-   FINAL OVERRIDE - HERO DESC JUSTIFY
-   ========================================= */
-body .hero .hero-content .hero-desc {
-    max-width: 100% !important;
-    width: 100% !important;
-    text-align: justify !important;
-    text-justify: inter-word !important;
+/* Skill card: tetap rata kiri (tidak justify) */
+.skill-card p {
+    text-align: left !important;
+    text-justify: none !important;
     text-align-last: left !important;
-    hyphens: auto !important;
-    -webkit-hyphens: auto !important;
-    -ms-hyphens: auto !important;
 }
 
 /* =========================================
