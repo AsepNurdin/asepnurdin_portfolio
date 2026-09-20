@@ -3,18 +3,22 @@
    ========================================= */
 :root {
     /* Color Palette - Dark Elegant Tech Theme */
-    --bg-primary: #0f172a;       /* Very dark slate */
-    --bg-secondary: #1e293b;     /* Slightly lighter for cards */
-    --bg-darker: #020617;        /* For alternating sections */
-    --text-primary: #f8fafc;     /* Off-white */
-    --text-secondary: #94a3b8;   /* Muted gray */
-    --accent: #38bdf8;           /* Cyan/Sky blue */
-    --accent-hover: #0ea5e9;     /* Darker cyan */
-    --border: #334155;           /* Subtle borders */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-darker: #020617;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --border: #334155;
     
     /* Typography */
     --font-main: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Spacing */
+    --section-padding: 100px;
+    --container-max: 1100px;
 }
 
 * {
@@ -25,6 +29,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Offset untuk fixed navbar */
 }
 
 body {
@@ -33,6 +38,8 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -45,10 +52,17 @@ ul {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .container {
-    max-width: 1100px;
+    max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 .mono-text {
@@ -68,8 +82,9 @@ ul {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
     padding: 15px 0;
@@ -85,6 +100,7 @@ ul {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.5px;
+    z-index: 1001;
 }
 
 .nav-links {
@@ -97,6 +113,7 @@ ul {
     font-size: 0.95rem;
     color: var(--text-secondary);
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -119,6 +136,9 @@ ul {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-primary);
+    z-index: 1001;
+    background: none;
+    border: none;
 }
 
 /* =========================================
@@ -129,7 +149,7 @@ ul {
     display: flex;
     align-items: center;
     padding-top: 80px;
-    /* Subtle tech grid background */
+    padding-bottom: 60px;
     background-image: 
         linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
@@ -138,6 +158,46 @@ ul {
 
 .hero-content {
     max-width: 800px;
+    width: 100%;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1.5s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+}
+
+.status-text {
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
 .hero-title {
@@ -160,23 +220,29 @@ ul {
     color: var(--text-secondary);
     max-width: 600px;
     margin-bottom: 30px;
+    line-height: 1.7;
 }
 
 .hero-buttons {
     display: flex;
     gap: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 12px 24px;
     border-radius: 6px;
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -224,7 +290,7 @@ ul {
    4. SECTIONS GENERAL
    ========================================= */
 .section {
-    padding: 100px 0;
+    padding: var(--section-padding) 0;
 }
 
 .bg-darker {
@@ -244,11 +310,22 @@ ul {
 }
 
 /* =========================================
-   5. SKILLS SECTION
+   5. ABOUT SECTION
+   ========================================= */
+.about-text p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 750px;
+}
+
+/* =========================================
+   6. SKILLS SECTION
    ========================================= */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
@@ -273,17 +350,19 @@ ul {
 }
 
 .skill-card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
 }
 
 .skill-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* =========================================
-   6. EXPERIENCE SECTION (Timeline)
+   7. EXPERIENCE SECTION (Timeline)
    ========================================= */
 .timeline {
     position: relative;
@@ -294,6 +373,10 @@ ul {
 .timeline-item {
     position: relative;
     margin-bottom: 50px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-item::before {
@@ -318,13 +401,14 @@ ul {
 .timeline-content h4 {
     font-size: 1.3rem;
     margin-bottom: 5px;
+    color: var(--text-primary);
 }
 
 .timeline-content h5 {
     color: var(--text-secondary);
     font-weight: 500;
     margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
 
 .timeline-content ul {
@@ -335,14 +419,15 @@ ul {
 
 .timeline-content ul li {
     margin-bottom: 8px;
+    line-height: 1.6;
 }
 
 /* =========================================
-   7. CERTIFICATIONS SECTION
+   8. CERTIFICATIONS SECTION
    ========================================= */
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
 }
 
@@ -357,6 +442,7 @@ ul {
 
 .cert-card:hover {
     border-color: var(--accent);
+    transform: translateY(-3px);
 }
 
 .cert-icon {
@@ -368,6 +454,7 @@ ul {
 .cert-card h4 {
     font-size: 1rem;
     margin-bottom: 10px;
+    color: var(--text-primary);
 }
 
 .cert-card p {
@@ -375,7 +462,7 @@ ul {
 }
 
 /* =========================================
-   8. FOOTER
+   9. FOOTER
    ========================================= */
 .footer {
     padding: 30px 0;
@@ -390,48 +477,235 @@ ul {
 }
 
 /* =========================================
-   9. RESPONSIVE DESIGN
+   10. RESPONSIVE - TABLET (max-width: 1024px)
    ========================================= */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    :root {
+        --section-padding: 80px;
+    }
+    
     .hero-title {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
     }
     
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
-
-    .nav-links {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        flex-direction: column;
-        background: var(--bg-secondary);
-        width: 100%;
-        padding: 30px;
-        transition: right 0.3s ease;
-        border-bottom: 1px solid var(--border);
+    
+    .section-title {
+        font-size: 1.8rem;
     }
+}
 
-    .nav-links.active {
-        right: 0;
+/* =========================================
+   11. RESPONSIVE - MOBILE (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 60px;
     }
-
+    
+    .container {
+        padding: 0 18px;
+    }
+    
+    /* Navbar Mobile */
     .hamburger {
         display: block;
     }
-
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        flex-direction: column;
+        background: var(--bg-secondary);
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        padding: 80px 30px 30px;
+        gap: 20px;
+        transition: right 0.3s ease;
+        border-left: 1px solid var(--border);
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.05rem;
+        padding: 10px 0;
+        display: block;
+    }
+    
+    .btn-nav {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    /* Hero Mobile */
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-desc {
+        font-size: 1rem;
+    }
+    
     .hero-buttons {
         flex-direction: column;
+        width: 100%;
     }
-
+    
     .btn {
         width: 100%;
-        justify-content: center;
     }
-
+    
     .hero-contact {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
     }
+    
+    .hero-contact a {
+        font-size: 0.85rem;
+    }
+    
+    /* Status Badge Mobile */
+    .status-badge {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .status-dot {
+        width: 7px;
+        height: 7px;
+    }
+    
+    /* Sections Mobile */
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 35px;
+    }
+    
+    .section-title .mono-text {
+        font-size: 1rem;
+    }
+    
+    /* Skills Mobile */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .skill-card {
+        padding: 25px;
+    }
+    
+    /* Timeline Mobile */
+    .timeline {
+        padding-left: 25px;
+    }
+    
+    .timeline-item::before {
+        left: -32px;
+        width: 10px;
+        height: 10px;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.15rem;
+    }
+    
+    .timeline-content h5 {
+        font-size: 0.95rem;
+    }
+    
+    .timeline-content ul li {
+        font-size: 0.95rem;
+    }
+    
+    /* Certifications Mobile */
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   12. RESPONSIVE - SMALL MOBILE (max-width: 480px)
+   ========================================= */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-desc {
+        font-size: 0.95rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .skill-card,
+    .cert-card {
+        padding: 20px;
+    }
+    
+    .skill-icon {
+        font-size: 1.7rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.05rem;
+    }
+    
+    .timeline-content ul {
+        padding-left: 15px;
+    }
+}
+
+/* =========================================
+   13. OVERLAY untuk Mobile Menu
+   ========================================= */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
