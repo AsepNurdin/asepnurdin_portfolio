@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Report: Server Virtualization | Asep Nurdin</title>
+    <meta name="description" content="Technical documentation for server virtualization implementation using VMware, Hyper-V, and Proxmox.">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-detail-header">
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+            <div class="header-meta">
+                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2015 - Present</span>
+                <span class="meta-tag"><i class="fas fa-building"></i> PT Autocomp Systems Indonesia</span>
+                <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
+            </div>
+            <h1 class="project-title">Server Virtualization & <span class="accent">Infrastructure Management</span></h1>
+            <p class="project-subtitle">
+                Comprehensive technical documentation on enterprise virtualization using VMware vSphere, Hyper-V, and Proxmox VE for high-availability infrastructure.
+            </p>
+        </div>
+    </header>
+
+    <!-- Document Content -->
+    <section class="project-detail-content">
+        <div class="container">
+            
+            <!-- Document Info Table -->
+            <div class="doc-info-container">
+                <div class="doc-info-grid">
+                    <div class="doc-info-item"><strong>Project Name:</strong> Enterprise Virtualization Platform</div>
+                    <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
+                    <div class="doc-info-item"><strong>Role:</strong> IT Infrastructure & Security Specialist</div>
+                    <div class="doc-info-item"><strong>Technologies:</strong> VMware, Hyper-V, Proxmox</div>
+                </div>
+            </div>
+
+            <!-- 1. Executive Summary -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">01.</span> Executive Summary</h2>
+                <p>
+                    Over 8 years of experience in designing, deploying, and managing enterprise-grade virtualization infrastructure across multiple platforms. This technical report covers the implementation of VMware vSphere, Microsoft Hyper-V, and Proxmox VE to create a resilient, scalable, and cost-effective virtualization environment that supports critical business applications and services.
+                </p>
+            </div>
+
+            <!-- 2. VMware vSphere Implementation -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">02.</span> VMware vSphere Implementation</h2>
+                <p>
+                    Deployed and managed VMware vSphere clusters for production workloads, implementing vCenter Server for centralized management, vMotion for live migration, and DRS for automated load balancing. Configured VMFS datastores and integrated with SAN storage for high-performance storage access.
+                </p>
+
+                <h3 class="sub-heading">Key Features Implemented:</h3>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>vCenter Server & ESXi Hosts</strong>
+                            <p>Centralized management of multiple ESXi hosts with role-based access control.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>vMotion & High Availability</strong>
+                            <p>Zero-downtime live migration and automatic VM restart on host failure.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Distributed Resource Scheduler (DRS)</strong>
+                            <p>Automated workload balancing across cluster nodes for optimal performance.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3. Microsoft Hyper-V Deployment -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">03.</span> Microsoft Hyper-V Deployment</h2>
+                <p>
+                    Implemented Microsoft Hyper-V virtualization for Windows-based workloads, leveraging Hyper-V Manager and System Center Virtual Machine Manager (SCVMM) for orchestration. Configured Failover Clustering for high availability and utilized PowerShell for automation and scripting.
+                </p>
+
+                <h3 class="sub-heading">Key Features Implemented:</h3>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Hyper-V Failover Clustering</strong>
+                            <p>High-availability clusters with shared storage for automatic VM failover.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Live Migration</strong>
+                            <p>Seamless VM migration between Hyper-V hosts without service interruption.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>PowerShell Automation</strong>
+                            <p>Scripted VM provisioning, backup, and maintenance tasks for operational efficiency.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 4. Proxmox VE for DMZ Infrastructure (HIGHLIGHT) -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">04.</span> Proxmox VE for DMZ Infrastructure</h2>
+                <p>
+                    <strong>Special Focus:</strong> Implemented Proxmox Virtual Environment (VE) as a cost-effective, open-source solution for hosting Demilitarized Zone (DMZ) services. This deployment demonstrates the use of Proxmox for network segmentation and security isolation of public-facing services.
+                </p>
+
+                <!-- IMAGE PLACEHOLDER 1 -->
+                <figure class="tech-figure">
+                    <img src="images/proxmox-dmz-topology.png" alt="Proxmox DMZ Architecture">
+                    <figcaption>Figure 1: Proxmox VE cluster architecture for DMZ server isolation and network segmentation.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">4.1 DMZ Server Implementation</h3>
+                <p>
+                    Deployed Proxmox VE cluster to host isolated DMZ workloads including web servers, mail gateways, and reverse proxies. Configured multiple virtual bridges (vmbr) to separate DMZ traffic from internal LAN, ensuring strict network segmentation and security compliance.
+                </p>
+
+                <h3 class="sub-heading">4.2 KVM & LXC Containers</h3>
+                <p>
+                    Utilized a hybrid approach combining KVM Virtual Machines for full OS isolation and LXC containers for lightweight, high-performance workloads. This approach optimized resource utilization while maintaining security boundaries between services.
+                </p>
+
+                <!-- IMAGE PLACEHOLDER 2 -->
+                <figure class="tech-figure">
+                    <img src="images/proxmox-cluster-dashboard.png" alt="Proxmox Cluster Dashboard">
+                    <figcaption>Figure 2: Proxmox VE web interface showing cluster nodes, storage pools, and VM status monitoring.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">4.3 High Availability & Backup</h3>
+                <p>
+                    Configured Proxmox HA (High Availability) for critical DMZ services, ensuring automatic VM restart on node failure. Implemented automated backup jobs to off-site storage using Proxmox Backup Server (PBS) for disaster recovery and ransomware protection.
+                </p>
+
+                <h3 class="sub-heading">4.4 Security Hardening</h3>
+                <p>
+                    Applied security best practices including: firewall rules at the hypervisor level, VLAN tagging for network isolation, SSH key-based authentication, and regular security updates. Integrated with external firewalls (Fortigate/Palo Alto) for perimeter security enforcement.
+                </p>
+
+                <!-- IMAGE PLACEHOLDER 3 -->
+                <figure class="tech-figure">
+                    <img src="images/proxmox-firewall-rules.png" alt="Proxmox Firewall Configuration">
+                    <figcaption>Figure 3: Proxmox firewall rules and security groups for DMZ traffic control and isolation.</figcaption>
+                </figure>
+            </div>
+
+            <!-- 5. Results & Impact -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">05.</span> Results & Business Impact</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-server accent"></i> 99.9% Uptime</h3>
+                        <p>High availability configurations across all platforms ensured minimal downtime and business continuity.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-coins accent"></i> Cost Reduction</h3>
+                        <p>Proxmox VE implementation reduced licensing costs by 60% compared to proprietary solutions for non-critical workloads.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-shield-alt accent"></i> Enhanced Security</h3>
+                        <p>DMZ isolation using Proxmox significantly reduced attack surface and prevented lateral movement threats.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-tachometer-alt accent"></i> Improved Performance</h3>
+                        <p>Resource optimization through DRS and intelligent VM placement improved overall infrastructure performance by 40%.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript untuk Mobile Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
