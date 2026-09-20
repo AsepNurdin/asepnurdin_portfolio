@@ -829,3 +829,20 @@ img {
     text-justify: inter-word !important;
     text-align-last: left !important;
 }
+
+/* =========================================
+   FINAL OVERRIDE - PROJECT SUBTITLE FULL WIDTH DESKTOP
+   ========================================= */
+@media (min-width: 769px) {
+    .page-subtitle,
+    .project-subtitle {
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: justify !important;
+        text-justify: inter-word !important;
+        text-align-last: left !important;
+        hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+    }
+}
