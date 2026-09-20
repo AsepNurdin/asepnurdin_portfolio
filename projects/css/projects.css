@@ -382,11 +382,11 @@ img {
     font-size: 1.1rem;
 }
 
+/* DIPERBAIKI: Hapus max-width agar full width & rata dengan kotak */
 .detail-section p {
     color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.8;
-    max-width: 900px;
     text-align: justify;
     text-justify: inter-word;
 }
