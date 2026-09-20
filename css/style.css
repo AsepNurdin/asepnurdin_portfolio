@@ -2,21 +2,19 @@
    1. VARIABLES & RESET
    ========================================= */
 :root {
-    /* Color Palette - Dark Elegant Tech Theme */
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-darker: #020617;
+    --bg-primary: #0a0f1c;
+    --bg-secondary: #111827;
+    --bg-darker: #060a14;
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
-    --accent: #38bdf8;
-    --accent-hover: #0ea5e9;
-    --border: #334155;
+    --text-muted: #64748b;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --border: #1e293b;
     
-    /* Typography */
     --font-main: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     
-    /* Spacing */
     --section-padding: 100px;
     --container-max: 1100px;
 }
@@ -82,12 +80,12 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(10, 15, 28, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
-    padding: 15px 0;
+    padding: 18px 0;
 }
 
 .nav-container {
@@ -117,7 +115,7 @@ img {
 }
 
 .nav-links a:hover {
-    color: var(--accent);
+    color: var(--text-primary);
 }
 
 .btn-nav {
@@ -128,7 +126,7 @@ img {
 }
 
 .btn-nav:hover {
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(59, 130, 246, 0.1);
 }
 
 .hamburger {
@@ -142,26 +140,20 @@ img {
 }
 
 /* =========================================
-   3. HERO SECTION - CENTERED
+   3. HERO SECTION
    ========================================= */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center; /* ✅ CENTER HORIZONTAL */
+    justify-content: flex-start;
     padding-top: 80px;
     padding-bottom: 60px;
-    background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
 }
 
 .hero-content {
     max-width: 800px;
     width: 100%;
-    margin: 0 auto; /* ✅ CENTER CONTENT */
-    text-align: left;
 }
 
 /* Status Badge */
@@ -169,11 +161,11 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
     padding: 8px 18px;
     border-radius: 50px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 0.9rem;
 }
 
@@ -204,10 +196,10 @@ img {
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 10px 0;
-    letter-spacing: -1px;
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
     line-height: 1.1;
 }
 
@@ -216,77 +208,14 @@ img {
     color: var(--text-secondary);
     font-weight: 400;
     margin-bottom: 20px;
+    letter-spacing: -0.5px;
 }
 
 .hero-desc {
     font-size: 1.1rem;
-    color: var(--text-secondary);
-    max-width: 650px;
-    margin-bottom: 30px;
+    color: var(--text-muted);
+    max-width: 600px;
     line-height: 1.7;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 35px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-}
-
-.btn-primary {
-    background: var(--accent);
-    color: var(--bg-primary);
-}
-
-.btn-primary:hover {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.hero-contact {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.hero-contact a {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.hero-contact a:hover {
-    color: var(--accent);
 }
 
 /* =========================================
@@ -321,6 +250,51 @@ img {
     line-height: 1.8;
     margin-bottom: 20px;
     max-width: 750px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
 /* =========================================
@@ -371,7 +345,7 @@ img {
     position: relative;
     padding-left: 30px;
     border-left: 2px solid var(--border);
-    max-width: 800px; /* ✅ Batasi lebar timeline */
+    max-width: 800px;
 }
 
 .timeline-item {
@@ -466,13 +440,51 @@ img {
 }
 
 /* =========================================
-   9. FOOTER
+   9. CONTACT SECTION
+   ========================================= */
+.contact-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+}
+
+.contact-link i {
+    color: var(--accent);
+    font-size: 1.1rem;
+    width: 20px;
+}
+
+.contact-link:hover {
+    color: var(--text-primary);
+    transform: translateX(5px);
+}
+
+/* =========================================
+   10. FOOTER
    ========================================= */
 .footer {
     padding: 30px 0;
     text-align: center;
     border-top: 1px solid var(--border);
-    color: var(--text-secondary);
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
@@ -481,7 +493,7 @@ img {
 }
 
 /* =========================================
-   10. RESPONSIVE - TABLET (max-width: 1024px)
+   11. RESPONSIVE - TABLET (max-width: 1024px)
    ========================================= */
 @media (max-width: 1024px) {
     :root {
@@ -502,7 +514,7 @@ img {
 }
 
 /* =========================================
-   11. RESPONSIVE - MOBILE (max-width: 768px)
+   12. RESPONSIVE - MOBILE (max-width: 768px)
    ========================================= */
 @media (max-width: 768px) {
     :root {
@@ -553,17 +565,13 @@ img {
     /* Hero Mobile */
     .hero {
         min-height: auto;
-        padding-top: 100px;
+        padding-top: 120px;
         padding-bottom: 60px;
-        justify-content: flex-start; /* ✅ Di mobile, rata kiri lebih enak dibaca */
-    }
-    
-    .hero-content {
-        text-align: left;
     }
     
     .hero-title {
         font-size: 2.5rem;
+        letter-spacing: -1px;
     }
     
     .hero-subtitle {
@@ -572,24 +580,6 @@ img {
     
     .hero-desc {
         font-size: 1rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .btn {
-        width: 100%;
-    }
-    
-    .hero-contact {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .hero-contact a {
-        font-size: 0.85rem;
     }
     
     /* Status Badge Mobile */
@@ -655,10 +645,19 @@ img {
     .about-text p {
         font-size: 1rem;
     }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+    }
 }
 
 /* =========================================
-   12. RESPONSIVE - SMALL MOBILE (max-width: 480px)
+   13. RESPONSIVE - SMALL MOBILE (max-width: 480px)
    ========================================= */
 @media (max-width: 480px) {
     .container {
