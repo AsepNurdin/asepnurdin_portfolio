@@ -953,3 +953,17 @@ img {
     -webkit-hyphens: auto !important;
     -ms-hyphens: auto !important;
 }
+
+/* =========================================
+   FINAL OVERRIDE - HERO DESC JUSTIFY
+   ========================================= */
+body .hero .hero-content .hero-desc {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    text-align-last: left !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
+}
