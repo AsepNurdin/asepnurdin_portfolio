@@ -947,3 +947,22 @@ img {
     text-justify: inter-word !important;
     text-align-last: left !important;
 }
+
+/* =========================================
+   FORCE ABOUT ME FULL WIDTH & JUSTIFY
+   ========================================= */
+.about-text {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.about-text p {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    text-align-last: left !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
+}
