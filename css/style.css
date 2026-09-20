@@ -156,7 +156,6 @@ img {
     width: 100%;
 }
 
-/* Status Badge */
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -219,7 +218,6 @@ img {
     margin-bottom: 10px;
 }
 
-/* Stats Section */
 .hero-stats {
     display: flex;
     gap: 60px;
@@ -247,7 +245,6 @@ img {
     font-weight: 400;
 }
 
-/* Buttons */
 .hero-buttons {
     display: flex;
     gap: 15px;
@@ -507,13 +504,12 @@ img {
 }
 
 /* =========================================
-   10. FOOTER
+   10. FOOTER (DIPERBAIKI)
    ========================================= */
 .footer {
     background-color: var(--bg-darker);
     border-top: 1px solid var(--border);
-    padding: 40px 0;
-    margin-top: 60px;
+    padding: 35px 0;
 }
 
 .footer-content {
@@ -522,10 +518,16 @@ img {
     align-items: center;
 }
 
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
 .footer-left p {
     color: var(--text-secondary);
     font-size: 0.9rem;
-    margin-bottom: 8px;
+    margin: 0;
 }
 
 .footer-credit {
@@ -539,20 +541,20 @@ img {
 
 .footer-social {
     display: flex;
-    gap: 15px;
+    gap: 12px;
 }
 
 .footer-social a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
 }
 
@@ -560,36 +562,7 @@ img {
     background: var(--accent);
     color: var(--bg-primary);
     border-color: var(--accent);
-    transform: translateY(-3px);
-}
-
-/* Responsive Footer */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        gap: 25px;
-        text-align: center;
-    }
-    
-    .footer-social {
-        order: -1;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer {
-        padding: 30px 0;
-    }
-    
-    .footer-left p {
-        font-size: 0.85rem;
-    }
-    
-    .footer-social a {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-    }
+    transform: translateY(-2px);
 }
 
 /* =========================================
@@ -615,15 +588,6 @@ img {
     .stat-number {
         font-size: 2.5rem;
     }
-
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-    }
-    
-    .footer-brand {
-        grid-column: 1 / -1;
-    }
 }
 
 /* =========================================
@@ -638,7 +602,6 @@ img {
         padding: 0 18px;
     }
     
-    /* Navbar Mobile */
     .hamburger {
         display: block;
     }
@@ -675,7 +638,6 @@ img {
         margin-top: 10px;
     }
     
-    /* Hero Mobile */
     .hero {
         min-height: auto;
         padding-top: 120px;
@@ -695,7 +657,6 @@ img {
         font-size: 1rem;
     }
 
-    /* Stats Mobile */
     .hero-stats {
         gap: 40px;
         margin-top: 30px;
@@ -710,7 +671,6 @@ img {
         font-size: 0.9rem;
     }
     
-    /* Status Badge Mobile */
     .status-badge {
         padding: 6px 14px;
         font-size: 0.8rem;
@@ -721,7 +681,6 @@ img {
         height: 7px;
     }
     
-    /* Sections Mobile */
     .section-title {
         font-size: 1.5rem;
         margin-bottom: 35px;
@@ -731,7 +690,6 @@ img {
         font-size: 1rem;
     }
     
-    /* Skills Mobile */
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -741,7 +699,6 @@ img {
         padding: 25px;
     }
     
-    /* Timeline Mobile */
     .timeline {
         padding-left: 25px;
         max-width: 100%;
@@ -765,7 +722,6 @@ img {
         font-size: 0.95rem;
     }
     
-    /* Certifications Mobile */
     .cert-grid {
         grid-template-columns: 1fr;
     }
@@ -783,31 +739,8 @@ img {
         width: 100%;
     }
 
-    /* Footer Mobile */
-    .footer {
-        padding: 50px 0 25px;
-        margin-top: 40px;
-    }
-    
+    /* Footer Mobile Fix */
     .footer-content {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        margin-bottom: 40px;
-    }
-    
-    .footer-brand {
-        text-align: center;
-    }
-    
-    .footer-desc {
-        max-width: 100%;
-    }
-    
-    .footer-links ul li a:hover {
-        padding-left: 0;
-    }
-    
-    .footer-bottom {
         flex-direction: column;
         gap: 20px;
         text-align: center;
@@ -815,6 +748,10 @@ img {
     
     .footer-social {
         order: -1;
+    }
+    
+    .footer-left {
+        align-items: center;
     }
 }
 
@@ -867,26 +804,16 @@ img {
         padding-left: 15px;
     }
 
-    .footer-brand .logo {
-        font-size: 1.5rem;
+    .footer {
+        padding: 25px 0;
     }
     
-    .footer-desc {
-        font-size: 0.9rem;
-    }
-    
-    .footer-links h4,
-    .footer-contact h4 {
-        font-size: 1rem;
-    }
-    
-    .footer-contact ul li,
-    .footer-links ul li a {
-        font-size: 0.9rem;
-    }
-    
-    .footer-bottom-content p {
+    .footer-left p {
         font-size: 0.85rem;
+    }
+    
+    .footer-credit {
+        font-size: 0.8rem;
     }
     
     .footer-social a {
