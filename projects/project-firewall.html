@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Configuration & Management | Asep Nurdin</title>
+    <meta name="description" content="Network security policy implementation across Fortigate, Palo Alto, and Cisco firewalls.">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="projects-header">
+        <div class="container">
+            <a href="index.html" class="back-link" style="margin-bottom: 20px; display: inline-flex;">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+            <h1 class="page-title">Firewall <span class="accent">Configuration & Management</span></h1>
+            <p class="page-subtitle">
+                Network security policy implementation and management across multiple vendor firewalls
+            </p>
+        </div>
+    </header>
+
+    <!-- Firewall Vendors Grid -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-grid">
+
+                <!-- Fortigate 200F (AKTIF) -->
+                <article class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Fortigate 200F Implementation</h3>
+                        <p>Perimeter security implementation with UTM features, HA configuration, and SD-WAN optimization for enterprise network.</p>
+                        <div class="project-tags">
+                            <span class="tag">FortiOS</span>
+                            <span class="tag">UTM</span>
+                            <span class="tag">High Availability</span>
+                            <span class="tag">SD-WAN</span>
+                        </div>
+                        <a href="project-fortigate-200f.html" class="project-link">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Palo Alto Networks (COMING SOON) -->
+                <article class="project-card coming-soon">
+                    <div class="project-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Palo Alto Networks</h3>
+                        <p>Next-generation firewall deployment with App-ID, User-ID integration, and Threat Prevention for internal network segmentation.</p>
+                        <div class="project-tags">
+                            <span class="tag">PAN-OS</span>
+                            <span class="tag">App-ID</span>
+                            <span class="tag">Threat Prevention</span>
+                            <span class="tag">GlobalProtect</span>
+                        </div>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                </article>
+
+                <!-- Cisco Firepower (COMING SOON) -->
+                <article class="project-card coming-soon">
+                    <div class="project-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cisco Firepower</h3>
+                        <p>Advanced malware protection and firewall management integrated with Cisco ISE for comprehensive network security.</p>
+                        <div class="project-tags">
+                            <span class="tag">FTD</span>
+                            <span class="tag">FMC</span>
+                            <span class="tag">AMP</span>
+                            <span class="tag">Cisco ISE</span>
+                        </div>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript untuk Mobile Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
