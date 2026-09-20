@@ -811,3 +811,11 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================
+   11. FORCE JUSTIFY FOR PROJECT SUBTITLE
+   ========================================= */
+.project-subtitle {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
