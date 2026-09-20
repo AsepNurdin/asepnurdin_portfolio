@@ -815,7 +815,11 @@ img {
 /* =========================================
    11. FORCE JUSTIFY FOR PROJECT SUBTITLE
    ========================================= */
-.project-subtitle {
+.project-detail-header .project-subtitle {
     text-align: justify !important;
     text-justify: inter-word !important;
+    text-align-last: left !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
 }
