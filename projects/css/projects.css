@@ -174,10 +174,7 @@ img {
 .page-subtitle {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    max-width: 700px;
     line-height: 1.7;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* =========================================
@@ -244,8 +241,6 @@ img {
     line-height: 1.6;
     margin-bottom: 20px;
     flex-grow: 1;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 .project-tags {
@@ -356,10 +351,7 @@ img {
 .project-subtitle {
     font-size: 1.15rem;
     color: var(--text-secondary);
-    max-width: 800px;
     line-height: 1.7;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 .project-detail-content {
@@ -390,8 +382,6 @@ img {
     color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.8;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* Sub Headings (for Technical Doc) */
@@ -435,8 +425,6 @@ img {
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* Tech Stack Grid */
@@ -506,8 +494,6 @@ img {
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
-    text-align: justify;
-    text-justify: inter-word;
 }
 
 /* =========================================
@@ -816,33 +802,31 @@ img {
 }
 
 /* =========================================
-   11. FORCE JUSTIFY - ALL PROJECT DESCRIPTIONS
+   11. UNIVERSAL JUSTIFY - ALL DESCRIPTIONS (FINAL)
    ========================================= */
-.project-subtitle,
+
+/* Hapus max-width untuk semua deskripsi */
 .page-subtitle,
-.project-detail-header .project-subtitle,
-.project-detail-content .detail-section p,
+.project-subtitle,
+.project-content p,
+.detail-section p,
 .detail-list li p,
-.result-card p,
-.project-content p {
+.result-card p {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* Apply justify ke semua deskripsi */
+.page-subtitle,
+.project-subtitle,
+.project-content p,
+.detail-section p,
+.detail-list li p,
+.result-card p {
     text-align: justify !important;
     text-justify: inter-word !important;
     text-align-last: left !important;
-}
-
-/* =========================================
-   FINAL OVERRIDE - PROJECT SUBTITLE FULL WIDTH DESKTOP
-   ========================================= */
-@media (min-width: 769px) {
-    .page-subtitle,
-    .project-subtitle {
-        max-width: 100% !important;
-        width: 100% !important;
-        text-align: justify !important;
-        text-justify: inter-word !important;
-        text-align-last: left !important;
-        hyphens: auto !important;
-        -webkit-hyphens: auto !important;
-        -ms-hyphens: auto !important;
-    }
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
 }
