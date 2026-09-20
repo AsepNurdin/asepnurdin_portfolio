@@ -504,7 +504,7 @@ img {
 }
 
 /* =========================================
-   10. FOOTER (DIPERBAIKI)
+   10. FOOTER
    ========================================= */
 .footer {
     background-color: var(--bg-darker);
@@ -602,6 +602,7 @@ img {
         padding: 0 18px;
     }
     
+    /* ✅ NAVBAR MOBILE - DIPERBAIKI */
     .hamburger {
         display: block;
     }
@@ -611,33 +612,60 @@ img {
         top: 0;
         right: -100%;
         flex-direction: column;
+        align-items: flex-start; /* ✅ Rata kiri */
+        justify-content: flex-start;
         background: var(--bg-secondary);
-        width: 75%;
-        max-width: 300px;
+        width: 70%;
+        max-width: 280px;
         height: 100vh;
-        padding: 80px 30px 30px;
-        gap: 20px;
+        padding: 80px 25px 30px; /* ✅ Padding lebih rapat */
+        gap: 0; /* ✅ Hapus gap, pakai border */
         transition: right 0.3s ease;
         border-left: 1px solid var(--border);
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
     }
     
     .nav-links.active {
         right: 0;
     }
     
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid var(--border); /* ✅ Separator antar menu */
+    }
+    
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+    
     .nav-links a {
-        font-size: 1.05rem;
-        padding: 10px 0;
+        font-size: 1rem; /* ✅ Ukuran font lebih kecil */
+        padding: 16px 0; /* ✅ Padding vertikal yang pas */
         display: block;
+        text-align: left; /* ✅ Rata kiri */
+        color: var(--text-secondary);
+    }
+    
+    .nav-links a:hover {
+        color: var(--accent);
     }
     
     .btn-nav {
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
+        width: auto; /* ✅ Tidak full width */
+        text-align: left;
+        margin-top: 0;
+        padding: 16px 0;
+        border: none; /* ✅ Hapus border tombol */
+        color: var(--accent) !important;
+        font-weight: 600;
     }
     
+    .btn-nav:hover {
+        background: transparent;
+    }
+    
+    /* Hero Mobile */
     .hero {
         min-height: auto;
         padding-top: 120px;
@@ -739,7 +767,7 @@ img {
         width: 100%;
     }
 
-    /* Footer Mobile Fix */
+    /* Footer Mobile */
     .footer-content {
         flex-direction: column;
         gap: 20px;
@@ -820,5 +848,16 @@ img {
         width: 36px;
         height: 36px;
         font-size: 0.9rem;
+    }
+    
+    /* Menu mobile lebih kecil lagi */
+    .nav-links {
+        width: 75%;
+        padding: 70px 20px 30px;
+    }
+    
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 14px 0;
     }
 }
