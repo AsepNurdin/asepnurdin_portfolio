@@ -1006,3 +1006,17 @@ img {
     -webkit-hyphens: auto !important;
     -ms-hyphens: auto !important;
 }
+
+/* =========================================
+   FORCE HERO DESC FULL WIDTH & JUSTIFY
+   ========================================= */
+.hero-desc {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    text-align-last: left !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
+}
