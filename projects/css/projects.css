@@ -354,6 +354,8 @@ img {
     color: var(--text-secondary);
     max-width: 800px;
     line-height: 1.7;
+    text-align: justify;        /* ✅ Tambahkan ini */
+    text-justify: inter-word;   /* ✅ Tambahkan ini */
 }
 
 .project-detail-content {
@@ -385,6 +387,8 @@ img {
     font-size: 1.05rem;
     line-height: 1.8;
     max-width: 900px;
+    text-align: justify;        /* ✅ Tambahkan ini */
+    text-justify: inter-word;   /* ✅ Tambahkan ini untuk spacing yang lebih baik */
 }
 
 /* Sub Headings (for Technical Doc) */
@@ -428,6 +432,8 @@ img {
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
+    text-align: justify;        /* ✅ Tambahkan ini */
+    text-justify: inter-word;   /* ✅ Tambahkan ini */
 }
 
 /* Tech Stack Grid */
