@@ -29,7 +29,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Offset untuk fixed navbar */
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -142,12 +142,13 @@ img {
 }
 
 /* =========================================
-   3. HERO SECTION
+   3. HERO SECTION - CENTERED
    ========================================= */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center; /* ✅ CENTER HORIZONTAL */
     padding-top: 80px;
     padding-bottom: 60px;
     background-image: 
@@ -159,6 +160,8 @@ img {
 .hero-content {
     max-width: 800px;
     width: 100%;
+    margin: 0 auto; /* ✅ CENTER CONTENT */
+    text-align: left;
 }
 
 /* Status Badge */
@@ -218,7 +221,7 @@ img {
 .hero-desc {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    max-width: 600px;
+    max-width: 650px;
     margin-bottom: 30px;
     line-height: 1.7;
 }
@@ -368,6 +371,7 @@ img {
     position: relative;
     padding-left: 30px;
     border-left: 2px solid var(--border);
+    max-width: 800px; /* ✅ Batasi lebar timeline */
 }
 
 .timeline-item {
@@ -551,6 +555,11 @@ img {
         min-height: auto;
         padding-top: 100px;
         padding-bottom: 60px;
+        justify-content: flex-start; /* ✅ Di mobile, rata kiri lebih enak dibaca */
+    }
+    
+    .hero-content {
+        text-align: left;
     }
     
     .hero-title {
@@ -617,6 +626,7 @@ img {
     /* Timeline Mobile */
     .timeline {
         padding-left: 25px;
+        max-width: 100%;
     }
     
     .timeline-item::before {
@@ -687,25 +697,4 @@ img {
     .timeline-content ul {
         padding-left: 15px;
     }
-}
-
-/* =========================================
-   13. OVERLAY untuk Mobile Menu
-   ========================================= */
-.nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
 }
