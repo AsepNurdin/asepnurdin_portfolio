@@ -967,3 +967,15 @@ img {
     text-justify: none !important;
     text-align-last: left !important;
 }
+
+/* =========================================
+   FIX HERO DESC FULL WIDTH
+   ========================================= */
+.hero-content {
+    max-width: 100% !important;
+}
+
+.hero-desc {
+    max-width: 100% !important;
+    width: 100% !important;
+}
