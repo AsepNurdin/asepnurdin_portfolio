@@ -165,8 +165,10 @@ img {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 15px;
-    letter-spacing: -2px;
-    max-width: 900px; /* ✅ Batasi lebar judul */
+    letter-spacing: -1px; /* ✅ Kurangi dari -2px */
+    line-height: 1.05;    /* ✅ Kurangi dari 1.1 agar lebih rapat */
+    max-width: 900px;
+    color: var(--text-primary); /* ✅ Pastikan putih */
 }
 
 .page-subtitle {
