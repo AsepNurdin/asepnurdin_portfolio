@@ -176,6 +176,8 @@ img {
     color: var(--text-secondary);
     max-width: 700px;
     line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* =========================================
@@ -242,6 +244,8 @@ img {
     line-height: 1.6;
     margin-bottom: 20px;
     flex-grow: 1;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .project-tags {
@@ -382,7 +386,6 @@ img {
     font-size: 1.1rem;
 }
 
-/* DIPERBAIKI: Hapus max-width agar full width & rata dengan kotak */
 .detail-section p {
     color: var(--text-secondary);
     font-size: 1.05rem;
@@ -813,22 +816,16 @@ img {
 }
 
 /* =========================================
-   11. FORCE JUSTIFY FOR PROJECT SUBTITLE
+   11. FORCE JUSTIFY - ALL PROJECT DESCRIPTIONS
    ========================================= */
+.project-subtitle,
+.page-subtitle,
 .project-detail-header .project-subtitle,
-header.project-detail-header p.project-subtitle,
-body .project-detail-header .project-subtitle {
+.project-detail-content .detail-section p,
+.detail-list li p,
+.result-card p,
+.project-content p {
     text-align: justify !important;
     text-justify: inter-word !important;
     text-align-last: left !important;
-    hyphens: auto !important;
-    -webkit-hyphens: auto !important;
-    -ms-hyphens: auto !important;
-}
-
-/* Force justify untuk semua paragraph di detail section */
-.project-detail-content .detail-section p,
-body .detail-section p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
 }
