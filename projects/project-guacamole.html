@@ -3,575 +3,1029 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Report: Apache Guacamole Remote Access Gateway | Asep Nurdin</title>
-    <meta name="description" content="Technical documentation for Apache Guacamole clientless remote access gateway implementation for external vendor access.">
-    
-    <link rel="stylesheet" href="css/projects.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>FortiGate NGFW Security Policies Implementation - Portfolio</title>
+    <meta name="description" content="Implementation of FortiGate Next-Generation Firewall with comprehensive security policies for internal, DMZ, and internet traffic management.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #fafafa;
+        }
+
+        /* Hero Section - Orange/Red Firewall Theme */
+        .hero {
+            background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #c2410c 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(251, 146, 60, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 1.15em;
+            opacity: 0.9;
+            max-width: 750px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            font-size: 0.95em;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.85;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 6px;
+            height: 30px;
+            background: linear-gradient(180deg, #f97316, #ea580c);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+
+        /* Problem/Solution/Result Cards */
+        .psr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .psr-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-top: 4px solid;
+            transition: transform 0.3s;
+        }
+
+        .psr-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .psr-card.problem { border-color: #ef4444; }
+        .psr-card.solution { border-color: #f97316; }
+        .psr-card.result { border-color: #10b981; }
+
+        .psr-card .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .psr-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .psr-card p {
+            color: #475569;
+            font-size: 0.95em;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #9a3412;
+            border: 1px solid #fed7aa;
+            transition: all 0.2s;
+        }
+
+        .tech-badge:hover {
+            background: #9a3412;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Zone Cards */
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .zone-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-left: 5px solid;
+            transition: all 0.3s;
+        }
+
+        .zone-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .zone-card.internal { border-color: #3b82f6; }
+        .zone-card.dmz { border-color: #f97316; }
+        .zone-card.external { border-color: #ef4444; }
+
+        .zone-card .zone-icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+        }
+
+        .zone-card h3 {
+            font-size: 1.2em;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .zone-card p {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .zone-card .trust-level {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .zone-card.internal .trust-level {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .zone-card.dmz .trust-level {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .zone-card.external .trust-level {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Policy Table */
+        .policy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-size: 0.9em;
+        }
+
+        .policy-table th {
+            background: #9a3412;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .policy-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .policy-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .policy-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .policy-table .action-allow {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .policy-table .action-deny {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        /* Feature List */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .feature-item .check {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .feature-item h4 {
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: #0f172a;
+        }
+
+        .feature-item p {
+            font-size: 0.9em;
+            color: #64748b;
+        }
+
+        /* Architecture Diagram */
+        .diagram-box {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 2px dashed #f97316;
+            border-radius: 12px;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #9a3412;
+        }
+
+        .diagram-box .placeholder-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            opacity: 0.6;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+            overflow-x: auto;
+            margin: 15px 0;
+            line-height: 1.6;
+            border-left: 4px solid #f97316;
+        }
+
+        .code-block .comment {
+            color: #64748b;
+        }
+
+        .code-block .keyword {
+            color: #fb923c;
+        }
+
+        /* Security Profiles Box */
+        .profiles-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #f59e0b;
+            margin-top: 30px;
+        }
+
+        .profiles-box h3 {
+            color: #78350f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profiles-box ul {
+            list-style: none;
+        }
+
+        .profiles-box li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #78350f;
+        }
+
+        .profiles-box li::before {
+            content: '🛡️';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Lessons Learned */
+        .lessons {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .lessons h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lessons ul {
+            list-style: none;
+        }
+
+        .lessons li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #1e3a8a;
+        }
+
+        .lessons li::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background: #9a3412;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .comparison-table .before {
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        .comparison-table .after {
+            color: #059669;
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #7c2d12, #c2410c);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            opacity: 0.9;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #9a3412;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .hero { padding: 50px 20px; }
+            .section-title { font-size: 1.5em; }
+            .hero-meta { gap: 15px; font-size: 0.85em; }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
-            <ul class="nav-links">
-                <li><a href="../index.html#about">About</a></li>
-                <li><a href="../index.html#skills">Skills</a></li>
-                <li><a href="../index.html#experience">Experience</a></li>
-                <li><a href="index.html" class="active">Projects</a></li>
-                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">🔥 Network Security</span>
+            <h1>FortiGate NGFW Security Policies Implementation</h1>
+            <p class="tagline">Designing and implementing comprehensive firewall security policies for zone-based traffic control between internal network, DMZ, and internet.</p>
+            <div class="hero-meta">
+                <span>📅 2026</span>
+                <span>🏢 Enterprise Client</span>
+                <span>⏱️ 4 weeks</span>
+                <span>🛡️ 3 Security Zones</span>
             </div>
-        </div>
-    </nav>
-
-    <!-- Project Header -->
-    <header class="project-detail-header">
-        <div class="container">
-            <a href="project-remote-access.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Remote Access Projects
-            </a>
-            <div class="header-meta">
-                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2026</span>
-                <span class="meta-tag"><i class="fas fa-building"></i> Enterprise Client</span>
-                <span class="meta-tag"><i class="fas fa-clock"></i> 6 Weeks</span>
-                <span class="meta-tag"><i class="fas fa-users"></i> 50+ External Users</span>
-                <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
-            </div>
-            <h1 class="project-title">Apache Guacamole Remote Access Gateway</h1>
-            <p class="project-subtitle">
-                Internet-facing clientless gateway for external vendor access — secure RDP/SSH/VNC without VPN, accessible from anywhere via web browser.
-            </p>
-        </div>
-    </header>
-
-    <!-- Document Content -->
-    <section class="project-detail-content">
-        <div class="container">
-            
-            <!-- Document Info Table -->
-            <div class="doc-info-container">
-                <div class="doc-info-grid">
-                    <div class="doc-info-item"><strong>Project Name:</strong> External Vendor Access Gateway</div>
-                    <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
-                    <div class="doc-info-item"><strong>Role:</strong> Infrastructure Engineer</div>
-                    <div class="doc-info-item"><strong>Version:</strong> 1.0</div>
-                </div>
-            </div>
-
-            <!-- 01. Project Overview -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">01.</span> Project Overview</h2>
-                <p>
-                    Deployed internet-facing Apache Guacamole in DMZ to provide secure remote access for external vendors and third-party support teams — eliminating VPN requirements while maintaining strict security controls.
-                </p>
-
-                <h3 class="sub-heading"><i class="fas fa-bullseye accent"></i> The Challenge</h3>
-                <p>
-                    External vendors and support teams requiring VPN access for server maintenance and troubleshooting. VPN setup was complex, time-consuming (2-3 hours per vendor), difficult to audit, and posed security risks with credential sharing.
-                </p>
-
-                <h3 class="sub-heading"><i class="fas fa-lightbulb accent"></i> The Solution</h3>
-                <p>
-                    Internet-facing Apache Guacamole deployed in DMZ with strict security hardening, providing browser-based access without VPN. Vendors can access designated servers via HTTPS from anywhere using only a web browser.
-                </p>
-
-                <h3 class="sub-heading"><i class="fas fa-star accent"></i> The Result</h3>
-                <p>
-                    Zero VPN dependencies, 95% reduction in vendor onboarding time (from 2-3 hours to 5 minutes), complete session audit trails, and granular access control for external parties.
-                </p>
-            </div>
-
-            <!-- 02. Before vs After -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">02.</span> Before vs After</h2>
-                <p>Comparison of vendor access methods before and after Guacamole implementation.</p>
-                
-                <table style="width: 100%; border-collapse: collapse; margin-top: 20px; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
-                    <thead>
-                        <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border);">
-                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">Aspect</th>
-                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">Before (VPN)</th>
-                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">After (Guacamole)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Access Method</strong></td>
-                            <td style="padding: 15px;">VPN client + RDP/SSH client</td>
-                            <td style="padding: 15px;">Web browser only (HTTPS)</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Network Access</strong></td>
-                            <td style="padding: 15px;">Full internal network access</td>
-                            <td style="padding: 15px;">DMZ only, specific servers</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Vendor Onboarding</strong></td>
-                            <td style="padding: 15px;">2-3 hours (VPN setup)</td>
-                            <td style="padding: 15px;">5 minutes (browser URL + credentials)</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Audit Trail</strong></td>
-                            <td style="padding: 15px;">VPN logs only, no session recording</td>
-                            <td style="padding: 15px;">Full session recording + access logs</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Security Risk</strong></td>
-                            <td style="padding: 15px;">High (full network access via VPN)</td>
-                            <td style="padding: 15px;">Low (DMZ isolation, specific servers only)</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 15px;"><strong>Device Compatibility</strong></td>
-                            <td style="padding: 15px;">Limited to configured devices</td>
-                            <td style="padding: 15px;">Any device with modern browser</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 03. Key Metrics -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">03.</span> Key Metrics</h2>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h3><i class="fas fa-users accent"></i> 50+ External Vendors</h3>
-                        <p>Successfully onboarded 50+ external vendors and support teams without VPN.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-network-wired accent"></i> 30+ Server Connections</h3>
-                        <p>Centralized access to 30+ production and non-production servers.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-clock accent"></i> 95% Faster Onboarding</h3>
-                        <p>Vendor access reduced from 2-3 hours to just 5 minutes.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-shield-alt accent"></i> Zero VPN Dependencies</h3>
-                        <p>Completely eliminated VPN requirements for external vendor access.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-video accent"></i> 100% Session Recording</h3>
-                        <p>All vendor sessions recorded for compliance and audit purposes.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-globe accent"></i> Internet-Facing</h3>
-                        <p>Accessible from anywhere via HTTPS without corporate network access.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 04. Tech Stack -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">04.</span> Tech Stack</h2>
-                <p>Technology components deployed in DMZ for internet-facing access.</p>
-                <div class="tech-stack-grid">
-                    <div class="tech-item"><i class="fas fa-globe"></i> Apache Guacamole 1.5.x</div>
-                    <div class="tech-item"><i class="fas fa-cogs"></i> guacd (Daemon)</div>
-                    <div class="tech-item"><i class="fab fa-java"></i> Apache Tomcat 10</div>
-                    <div class="tech-item"><i class="fas fa-database"></i> MySQL 8.0</div>
-                    <div class="tech-item"><i class="fas fa-shield-alt"></i> Nginx Reverse Proxy</div>
-                    <div class="tech-item"><i class="fas fa-lock"></i> Let's Encrypt SSL</div>
-                    <div class="tech-item"><i class="fas fa-network-wired"></i> DMZ Deployment</div>
-                    <div class="tech-item"><i class="fab fa-ubuntu"></i> Ubuntu 22.04 LTS</div>
-                    <div class="tech-item"><i class="fas fa-ban"></i> Fail2ban</div>
-                    <div class="tech-item"><i class="fas fa-filter"></i> IP Whitelisting</div>
-                </div>
-            </div>
-
-            <!-- 05. Supported Protocols -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">05.</span> Supported Protocols</h2>
-                <p>Multi-protocol support for various vendor access requirements.</p>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h3><i class="fas fa-desktop accent"></i> RDP</h3>
-                        <p>Remote Desktop Protocol for Windows Server access. <strong>Port 3389</strong></p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-terminal accent"></i> SSH</h3>
-                        <p>Secure Shell for Linux/Unix server access. <strong>Port 22</strong></p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-tv accent"></i> VNC</h3>
-                        <p>Virtual Network Computing for desktop access. <strong>Port 5900</strong></p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-ethernet accent"></i> Telnet</h3>
-                        <p>Legacy network device access. <strong>Port 23</strong></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 06. Key Features Implemented -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">06.</span> Key Features Implemented</h2>
-                <p>Critical features for secure external vendor access.</p>
-                <ul class="detail-list">
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>No VPN Required</strong>
-                            <p>Vendors access servers directly via HTTPS without VPN client installation or configuration.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Internet-Facing DMZ Deployment</strong>
-                            <p>Deployed in DMZ with strict isolation from internal network, accessible from public internet.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Session Recording</strong>
-                            <p>All vendor RDP/VNC sessions recorded in video format for compliance and forensic audit.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Granular Access Control</strong>
-                            <p>Per-vendor permissions: specific servers only, no lateral movement allowed.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>IP Whitelisting</strong>
-                            <p>Access restricted to known vendor IP addresses and office locations.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Connection History & Audit Logs</strong>
-                            <p>Complete audit trail: who accessed what server, when, and session duration.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Temporary Access</strong>
-                            <p>Time-limited access accounts for short-term vendor engagements.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Disabled File Transfer</strong>
-                            <p>Clipboard and file transfer disabled for production server access to prevent data exfiltration.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 07. Architecture Overview -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">07.</span> Architecture Overview</h2>
-                <p>Internet-facing deployment in DMZ with multiple security layers.</p>
-
-                <figure class="tech-figure">
-                    <img src="images/guacamole-architecture.png" alt="Guacamole DMZ Architecture Diagram">
-                    <figcaption>Figure 1: Internet → Firewall (IP Whitelist) → DMZ (Nginx + Guacamole) → Internal Servers (RDP/SSH)</figcaption>
-                </figure>
-
-                <h3 class="sub-heading">Security Layers</h3>
-                <ul class="detail-list">
-                    <li>
-                        <i class="fas fa-layer-group"></i>
-                        <div>
-                            <strong>Layer 1: Perimeter Firewall</strong>
-                            <p>Only HTTPS (443) allowed from whitelisted vendor IPs, all other traffic blocked.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-layer-group"></i>
-                        <div>
-                            <strong>Layer 2: DMZ Isolation</strong>
-                            <p>Guacamole deployed in DMZ network segment, isolated from internal corporate network.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-layer-group"></i>
-                        <div>
-                            <strong>Layer 3: Application Security</strong>
-                            <p>SSL/TLS encryption, Fail2ban brute-force protection, session timeout (15 min idle).</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-layer-group"></i>
-                        <div>
-                            <strong>Layer 4: Access Control</strong>
-                            <p>Per-vendor permissions, specific server access only, no network discovery.</p>
-                        </div>
-                    </li>
-                </ul>
-
-                <h3 class="sub-heading">Nginx Reverse Proxy Configuration</h3>
-                <pre style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 20px; border-radius: 8px; overflow-x: auto; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.6;"><code>server {
-    listen 443 ssl http2;
-    server_name guacamole.company.com;
-
-    # SSL Configuration
-    ssl_certificate     /etc/letsencrypt/live/guacamole.company.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/guacamole.company.com/privkey.pem;
-    ssl_protocols       TLSv1.2 TLSv1.3;
-    
-    # Security Headers
-    add_header Strict-Transport-Security "max-age=31536000" always;
-    add_header X-Frame-Options "DENY" always;
-    add_header X-Content-Type-Options "nosniff" always;
-
-    # IP Whitelisting (Vendor IPs only)
-    allow 203.0.113.0/24;    # Vendor A
-    allow 198.51.100.0/24;   # Vendor B
-    deny all;
-
-    # WebSocket support (required for Guacamole)
-    location / {
-        proxy_pass http://127.0.0.1:8080;
-        proxy_buffering off;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}</code></pre>
-            </div>
-
-            <!-- 08. Security Hardening -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">08.</span> Security Hardening</h2>
-                <p>Critical hardening measures because Guacamole is internet-facing and accessible from public networks.</p>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h3><i class="fas fa-lock accent"></i> HTTPS Only with HSTS</h3>
-                        <p>HTTP disabled,强制 HTTPS redirect with HTTP Strict Transport Security header.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-filter accent"></i> IP Whitelisting</h3>
-                        <p>Access restricted to known vendor IP addresses only via Nginx allow/deny rules.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-ban accent"></i> Fail2ban Protection</h3>
-                        <p>Auto-ban IP after 5 failed login attempts within 10 minutes to prevent brute-force attacks.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-clock accent"></i> Session Timeout</h3>
-                        <p>Automatic logout after 15 minutes of idle time to prevent unauthorized access.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-user-shield accent"></i> Remove Default Accounts</h3>
-                        <p>Default guacadmin account deleted immediately after setup.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-key accent"></i> Strong Password Policy</h3>
-                        <p>Minimum 12 characters with complexity requirements (letters/numbers/special chars).</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-network-wired accent"></i> DMZ Network Isolation</h3>
-                        <p>Guacamole server in DMZ, no direct access to internal corporate network.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-cut accent"></i> Disable File Transfer</h3>
-                        <p>Clipboard and file transfer disabled for production server connections.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-video accent"></i> Session Recording</h3>
-                        <p>All vendor sessions recorded and stored with 30-day retention policy.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-sync accent"></i> Regular Security Patching</h3>
-                        <p>Monthly security updates for Guacamole, Tomcat, and Ubuntu OS.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 09. My Role & Responsibilities -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">09.</span> My Role & Responsibilities</h2>
-                <p>End-to-end implementation as Infrastructure Engineer.</p>
-                <ul class="detail-list">
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>DMZ Architecture Design</strong>
-                            <p>Designed internet-facing Guacamole deployment in DMZ with multi-layer security.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Full Stack Installation</strong>
-                            <p>Installed and configured Guacamole stack (guacd + Tomcat + MySQL) in DMZ.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Firewall & Network Configuration</strong>
-                            <p>Configured perimeter firewall rules and DMZ network segmentation.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Nginx Reverse Proxy with SSL</strong>
-                            <p>Configured Nginx with Let's Encrypt SSL, IP whitelisting, and security headers.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Vendor Access Management</strong>
-                            <p>Created 50+ vendor accounts with granular permissions and server-specific access.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Session Recording Setup</strong>
-                            <p>Configured session recording for all vendor RDP connections with 30-day retention.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Security Hardening</strong>
-                            <p>Implemented Fail2ban, IP whitelisting, HSTS, session timeout, and disabled default accounts.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Vendor Onboarding & Training</strong>
-                            <p>Trained 50+ external vendors on Guacamole usage and documented SOP.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Automated Backup</strong>
-                            <p>Set up daily MySQL backup for disaster recovery of connection configurations.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Audit & Compliance</strong>
-                            <p>Implemented audit logging and session recording for compliance requirements.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 10. Lessons Learned -->
-            <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">10.</span> Lessons Learned</h2>
-                <ul class="detail-list">
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>IP Whitelisting is Critical</strong>
-                            <p>For internet-facing deployments, IP whitelisting at Nginx level is essential — don't rely only on application-level authentication.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>DMZ Isolation is Non-Negotiable</strong>
-                            <p>Never deploy internet-facing Guacamole directly on internal network — always use DMZ with strict firewall rules.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>Vendor Training is Essential</strong>
-                            <p>Vendors initially resist browser-based access; hands-on training and clear documentation significantly improves adoption.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>Session Storage Planning</strong>
-                            <p>Session recordings consume significant storage; plan for 30-day retention with automated cleanup (logrotate).</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>Fail2ban Prevents Attacks</strong>
-                            <p>Internet-facing services are constantly scanned; Fail2ban is essential to auto-block brute-force attempts.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>WebSocket Configuration is Critical</strong>
-                            <p>Without proper WebSocket support in Nginx, Guacamole connections will fail — test thoroughly before production.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>Per-Vendor Access Mapping</strong>
-                            <p>Document which vendor has access to which servers — crucial for audit and troubleshooting.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>Regular Security Audits</strong>
-                            <p>Quarterly review of vendor accounts, IP whitelist, and access logs to remove inactive vendors and detect anomalies.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
-                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+    <div class="container">
+        <!-- OVERVIEW -->
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-subtitle">Implementing robust network security through FortiGate NGFW with granular policy control and traffic segmentation.</p>
+
+            <div class="psr-grid">
+                <div class="psr-card problem">
+                    <div class="icon">🎯</div>
+                    <h3>The Challenge</h3>
+                    <p>Uncontrolled traffic flow between internal network, DMZ servers, and internet with minimal visibility, no centralized policy management, and high risk of lateral movement.</p>
                 </div>
-                <div class="footer-social">
-                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <div class="psr-card solution">
+                    <div class="icon">💡</div>
+                    <h3>The Solution</h3>
+                    <p>FortiGate NGFW deployment with zone-based architecture, comprehensive security policies, NAT configuration, and content security profiles for threat prevention.</p>
+                </div>
+                <div class="psr-card result">
+                    <div class="icon">✨</div>
+                    <h3>The Result</h3>
+                    <p>Complete traffic visibility, reduced attack surface by 70%, centralized policy management, and compliance with security best practices.</p>
                 </div>
             </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- Force Justify Script -->
-    <script src="js/force-justify.js"></script>
+        <!-- SECURITY ZONES -->
+        <section class="section">
+            <h2 class="section-title">Security Zone Architecture</h2>
+            <p class="section-subtitle">Three-tier security zone design with strict traffic control between zones.</p>
 
-    <!-- Mobile Menu Script -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = hamburger.querySelector('i');
-            if (navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } 
-            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
-        });
-    </script>
+            <div class="zone-grid">
+                <div class="zone-card internal">
+                    <div class="zone-icon">🏢</div>
+                    <h3>Internal Network</h3>
+                    <p>Trusted corporate network with workstations, internal servers, and business applications.</p>
+                    <span class="trust-level">High Trust</span>
+                </div>
+                <div class="zone-card dmz">
+                    <div class="zone-icon">🛡️</div>
+                    <h3>DMZ (Demilitarized Zone)</h3>
+                    <p>Semi-trusted zone hosting public-facing services: web servers, mail gateway, VPN concentrator.</p>
+                    <span class="trust-level">Medium Trust</span>
+                </div>
+                <div class="zone-card external">
+                    <div class="zone-icon">🌐</div>
+                    <h3>External / Internet</h3>
+                    <p>Untrusted external network. All traffic from this zone is treated as potentially malicious.</p>
+                    <span class="trust-level">Untrusted</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEFORE vs AFTER -->
+        <section class="section">
+            <h2 class="section-title">Before vs After</h2>
+            <p class="section-subtitle">Significant improvements in network security posture after FortiGate implementation.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Before</th>
+                        <th>After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Traffic Control</strong></td>
+                        <td class="before">Minimal or no firewall rules</td>
+                        <td class="after">Granular zone-based policies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visibility</strong></td>
+                        <td class="before">Limited logging, no real-time monitoring</td>
+                        <td class="after">Comprehensive logging & traffic analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Threat Prevention</strong></td>
+                        <td class="before">No IPS/AV/Web filtering</td>
+                        <td class="after">Multi-layer security profiles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NAT Management</strong></td>
+                        <td class="before">Manual, inconsistent NAT rules</td>
+                        <td class="after">Centralized NAT policies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Policy Management</strong></td>
+                        <td class="before">Scattered, undocumented rules</td>
+                        <td class="after">Organized, documented, auditable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compliance</strong></td>
+                        <td class="before">Non-compliant with security standards</td>
+                        <td class="after">Meets industry security benchmarks</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- KEY METRICS -->
+        <section class="section">
+            <h2 class="section-title">Key Metrics</h2>
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">Security Zones</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">50+</div>
+                    <div class="metric-label">Security Policies</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">20+</div>
+                    <div class="metric-label">NAT Rules</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">70%</div>
+                    <div class="metric-label">Attack Surface Reduction</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Traffic Logging</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Threat Monitoring</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH STACK -->
+        <section class="section">
+            <h2 class="section-title">Tech Stack</h2>
+            <p class="section-subtitle">FortiGate NGFW features and technologies utilized in this implementation.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">FortiGate NGFW</span>
+                <span class="tech-badge">FortiOS 7.x</span>
+                <span class="tech-badge">Zone-Based Policy</span>
+                <span class="tech-badge">IPv4/IPv6 Support</span>
+                <span class="tech-badge">Source NAT (SNAT)</span>
+                <span class="tech-badge">Destination NAT (DNAT)</span>
+                <span class="tech-badge">Virtual IP (VIP)</span>
+                <span class="tech-badge">Address Objects</span>
+                <span class="tech-badge">Service Objects</span>
+                <span class="tech-badge">Policy Groups</span>
+                <span class="tech-badge">IPS (Intrusion Prevention)</span>
+                <span class="tech-badge">Antivirus</span>
+                <span class="tech-badge">Web Filtering</span>
+                <span class="tech-badge">Application Control</span>
+                <span class="tech-badge">SSL Inspection</span>
+                <span class="tech-badge">Logging & Reporting</span>
+                <span class="tech-badge">FortiAnalyzer (optional)</span>
+            </div>
+        </section>
+
+        <!-- SECURITY POLICIES -->
+        <section class="section">
+            <h2 class="section-title">Security Policy Examples</h2>
+            <p class="section-subtitle">Sample security policies demonstrating zone-based traffic control.</p>
+
+            <table class="policy-table">
+                <thead>
+                    <tr>
+                        <th>Policy Name</th>
+                        <th>Source Zone</th>
+                        <th>Destination Zone</th>
+                        <th>Service</th>
+                        <th>Action</th>
+                        <th>Security Profiles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Internal to Internet</strong></td>
+                        <td>Internal</td>
+                        <td>External</td>
+                        <td>HTTP/HTTPS/DNS</td>
+                        <td class="action-allow">ALLOW</td>
+                        <td>AV, Web Filter, IPS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internal to DMZ</strong></td>
+                        <td>Internal</td>
+                        <td>DMZ</td>
+                        <td>SSH/RDP/App-specific</td>
+                        <td class="action-allow">ALLOW</td>
+                        <td>IPS, App Control</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internet to DMZ Web</strong></td>
+                        <td>External</td>
+                        <td>DMZ</td>
+                        <td>HTTP/HTTPS (Port 80/443)</td>
+                        <td class="action-allow">ALLOW</td>
+                        <td>IPS, AV, Web Filter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DMZ to Internal</strong></td>
+                        <td>DMZ</td>
+                        <td>Internal</td>
+                        <td>Database (Port 3306/1433)</td>
+                        <td class="action-allow">ALLOW</td>
+                        <td>IPS (strict)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internet to Internal</strong></td>
+                        <td>External</td>
+                        <td>Internal</td>
+                        <td>All</td>
+                        <td class="action-deny">DENY</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DMZ to Internet</strong></td>
+                        <td>DMZ</td>
+                        <td>External</td>
+                        <td>DNS/HTTP (updates only)</td>
+                        <td class="action-allow">ALLOW</td>
+                        <td>AV, Web Filter (restricted)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Default Deny All</strong></td>
+                        <td>Any</td>
+                        <td>Any</td>
+                        <td>All</td>
+                        <td class="action-deny">DENY</td>
+                        <td>Log all</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- KEY FEATURES -->
+        <section class="section">
+            <h2 class="section-title">Key Features Implemented</h2>
+            <p class="section-subtitle">Core firewall capabilities configured for comprehensive security.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Zone-Based Architecture</h4>
+                        <p>Clear separation of Internal, DMZ, and External zones with strict inter-zone policies.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Source NAT (SNAT)</h4>
+                        <p>Internal users access internet through masquerading NAT using public IP pool.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Destination NAT (DNAT/VIP)</h4>
+                        <p>External users access DMZ services via Virtual IP mapping to internal server IPs.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Intrusion Prevention (IPS)</h4>
+                        <p>Real-time detection and blocking of known exploits and attack patterns.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Antivirus Scanning</h4>
+                        <p>File-level malware detection for HTTP, FTP, SMTP, and POP3/IMAP traffic.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Web Filtering</h4>
+                        <p>Category-based web access control to block malicious, inappropriate, or non-business sites.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Application Control</h4>
+                        <p>Identify and control applications regardless of port or protocol (e.g., block P2P, allow only approved SaaS).</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>SSL Inspection</h4>
+                        <p>Deep packet inspection of encrypted HTTPS traffic to detect hidden threats.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Comprehensive Logging</h4>
+                        <p>All traffic logged with detailed information for audit, troubleshooting, and forensics.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check">✓</div>
+                    <div>
+                        <h4>Policy Optimization</h4>
+                        <p>Regular review and cleanup of unused policies to maintain performance and security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section class="section">
+            <h2 class="section-title">Network Architecture</h2>
+            <p class="section-subtitle">Traffic flow through FortiGate NGFW with zone-based security enforcement.</p>
+
+            <div class="diagram-box">
+                <div class="placeholder-icon">🔥</div>
+                <p><strong>[FortiGate Network Architecture Diagram]</strong></p>
+                <p style="font-size: 0.9em; margin-top: 15px; line-height: 1.8;">
+                    <code>Internal Network</code> ↔ <code>FortiGate NGFW</code> ↔ <code>DMZ Servers</code><br>
+                    <code>FortiGate NGFW</code> ↔ <code>Internet (ISP)</code>
+                </p>
+                <p style="font-size: 0.85em; margin-top: 10px; opacity: 0.7;">
+                    💡 Tip: Create diagram showing: Internal Switch → FortiGate (port1: internal, port2: DMZ, port3: WAN) → Internet
+                </p>
+            </div>
+
+            <div class="code-block">
+<span class="comment"># Example FortiGate CLI configuration for security policy</span>
+<span class="keyword">config firewall policy</span>
+    <span class="keyword">edit 1</span>
+        set name "Internal to Internet"
+        set srcintf "internal"
+        set dstintf "wan1"
+        set srcaddr "all"
+        set dstaddr "all"
+        set action accept
+        set service "HTTP" "HTTPS" "DNS"
+        set logtraffic all
+        set groups "IPS" "Antivirus" "Web-Filter"
+    <span class="keyword">next</span>
+    <span class="keyword">edit 2</span>
+        set name "Internet to DMZ Web"
+        set srcintf "wan1"
+        set dstintf "dmz"
+        set srcaddr "all"
+        set dstaddr "Web-Server-VIP"
+        set action accept
+        set service "HTTP" "HTTPS"
+        set logtraffic all
+        set groups "IPS" "Antivirus"
+    <span class="keyword">next</span>
+<span class="keyword">end</span>
+            </div>
+        </section>
+
+        <!-- SECURITY PROFILES -->
+        <section class="section">
+            <h2 class="section-title">Security Profiles Configuration</h2>
+            <p class="section-subtitle">Multi-layered security profiles applied to relevant policies.</p>
+
+            <div class="profiles-box">
+                <h3>🛡️ Security Profile Details</h3>
+                <ul>
+                    <li><strong>IPS Profile:</strong> High-security profile with blocking enabled for critical and high-severity vulnerabilities</li>
+                    <li><strong>Antivirus Profile:</strong> Protocol-based scanning for HTTP, FTP, SMTP, POP3, IMAP with malware action set to block</li>
+                    <li><strong>Web Filter Profile:</strong> Category-based filtering blocking malware, phishing, adult content, and non-business categories</li>
+                    <li><strong>Application Control:</strong> Block P2P, proxy, and unauthorized applications; allow only business-approved SaaS</li>
+                    <li><strong>SSL/SSH Inspection:</strong> Certificate-inspection mode for HTTPS; deep-inspection for critical servers</li>
+                    <li><strong>File Filter:</strong> Block executable files and dangerous file types from external sources</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- MY ROLE -->
+        <section class="section">
+            <h2 class="section-title">My Role & Responsibilities</h2>
+            <p class="section-subtitle">Specific contributions as a <strong>Network Security Engineer</strong>.</p>
+            <ul style="margin-left: 25px; margin-top: 15px;">
+                <li style="margin-bottom: 10px;">Designed zone-based network architecture with clear traffic flow boundaries</li>
+                <li style="margin-bottom: 10px;">Configured FortiGate NGFW interfaces and zone assignments</li>
+                <li style="margin-bottom: 10px;">Developed comprehensive security policy set (50+ policies) for all zone combinations</li>
+                <li style="margin-bottom: 10px;">Implemented Source NAT for internal internet access and Destination NAT (VIP) for DMZ services</li>
+                <li style="margin-bottom: 10px;">Configured security profiles (IPS, AV, Web Filter, App Control) per policy requirement</li>
+                <li style="margin-bottom: 10px;">Set up SSL inspection for encrypted traffic analysis</li>
+                <li style="margin-bottom: 10px;">Enabled comprehensive logging for all policies with log analysis</li>
+                <li style="margin-bottom: 10px;">Conducted policy testing and validation with stakeholders</li>
+                <li style="margin-bottom: 10px;">Documented all policies, NAT rules, and network architecture</li>
+                <li style="margin-bottom: 10px;">Provided training to IT team on FortiGate management and policy troubleshooting</li>
+            </ul>
+        </section>
+
+        <!-- LESSONS LEARNED -->
+        <section class="section">
+            <div class="lessons">
+                <h3>💡 Lessons Learned</h3>
+                <ul>
+                    <li>Start with a "deny-all" baseline and selectively allow only necessary traffic — this is the foundation of secure firewall design.</li>
+                    <li>Policy naming convention is critical for long-term maintainability (e.g., "Source-to-Destination-Service").</li>
+                    <li>Regular policy audit is essential — unused rules accumulate over time and create security gaps.</li>
+                    <li>SSL inspection can impact performance; test thoroughly before enabling on high-traffic policies.</li>
+                    <li>DMZ servers should have minimal outbound access — only allow what's absolutely necessary (DNS, updates).</li>
+                    <li>Logging everything is important, but log rotation and storage planning must be considered early.</li>
+                    <li>Involve application owners during policy design to understand legitimate traffic patterns.</li>
+                    <li>Document the "why" behind each policy, not just the "what" — this helps during future audits and troubleshooting.</li>
+                    <li>Test failover scenarios even without HA — understand what happens if the firewall goes down (fail-open vs fail-closed).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Interested in collaborating?</h2>
+            <p>I'm open to discussions about network security, firewall architecture, and threat prevention strategies. Let's connect!</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">📧 Contact Me</a>
+                <a href="#" class="btn btn-secondary">💼 LinkedIn</a>
+                <a href="#" class="btn btn-secondary">🐙 GitHub</a>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
