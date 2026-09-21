@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FortiGate NGFW Security Policies Implementation - Portfolio</title>
-    <meta name="description" content="Implementation of FortiGate Next-Generation Firewall with comprehensive security policies for internal, DMZ, and internet traffic management.">
+    <title>FortiGate 200F NGFW Security Policies Implementation - Portfolio</title>
+    <meta name="description" content="Implementation of FortiGate 200F Next-Generation Firewall with comprehensive security policies for internal, DMZ, and internet traffic management.">
     <style>
         * {
             margin: 0;
@@ -194,6 +194,53 @@
             font-size: 0.9em;
         }
 
+        /* Hardware Specs Card */
+        .hardware-card {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 2px solid #fb923c;
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.1);
+        }
+
+        .hardware-card h3 {
+            color: #7c2d12;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .hardware-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #f97316;
+        }
+
+        .hardware-item .label {
+            font-size: 0.8em;
+            color: #9a3412;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .hardware-item .value {
+            font-size: 1.05em;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
         /* Tech Stack */
         .tech-stack {
             display: flex;
@@ -217,6 +264,13 @@
             background: #9a3412;
             color: white;
             transform: translateY(-2px);
+        }
+
+        .tech-badge.highlight {
+            background: #f97316;
+            color: white;
+            border-color: #f97316;
+            font-weight: 600;
         }
 
         /* Zone Cards */
@@ -592,9 +646,9 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <span class="badge">🔥 Network Security</span>
-            <h1>FortiGate NGFW Security Policies Implementation</h1>
-            <p class="tagline">Designing and implementing comprehensive firewall security policies for zone-based traffic control between internal network, DMZ, and internet.</p>
+            <span class="badge">🔥 Enterprise Network Security</span>
+            <h1>FortiGate 200F NGFW Security Policies Implementation</h1>
+            <p class="tagline">Deploying a FortiGate 200F Next-Generation Firewall with comprehensive security policies for zone-based traffic control between internal network, DMZ, and internet.</p>
             <div class="hero-meta">
                 <span>📅 2026</span>
                 <span>🏢 Enterprise Client</span>
@@ -608,7 +662,7 @@
         <!-- OVERVIEW -->
         <section class="section">
             <h2 class="section-title">Project Overview</h2>
-            <p class="section-subtitle">Implementing robust network security through FortiGate NGFW with granular policy control and traffic segmentation.</p>
+            <p class="section-subtitle">Implementing robust network security through FortiGate 200F NGFW with granular policy control, hardware-accelerated inspection, and traffic segmentation.</p>
 
             <div class="psr-grid">
                 <div class="psr-card problem">
@@ -619,12 +673,72 @@
                 <div class="psr-card solution">
                     <div class="icon">💡</div>
                     <h3>The Solution</h3>
-                    <p>FortiGate NGFW deployment with zone-based architecture, comprehensive security policies, NAT configuration, and content security profiles for threat prevention.</p>
+                    <p>FortiGate 200F deployment with zone-based architecture, comprehensive security policies, NAT configuration, and content security profiles leveraging SP5 processor acceleration.</p>
                 </div>
                 <div class="psr-card result">
                     <div class="icon">✨</div>
                     <h3>The Result</h3>
-                    <p>Complete traffic visibility, reduced attack surface by 70%, centralized policy management, and compliance with security best practices.</p>
+                    <p>Complete traffic visibility, reduced attack surface by 70%, centralized policy management, and compliance with security best practices — all with hardware-accelerated throughput.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HARDWARE SPECIFICATIONS -->
+        <section class="section">
+            <h2 class="section-title">Hardware Specifications</h2>
+            <p class="section-subtitle">FortiGate 200F — enterprise-grade NGFW with dedicated security processors for high-performance inspection.</p>
+
+            <div class="hardware-card">
+                <h3>🔧 FortiGate 200F Specifications</h3>
+                <div class="hardware-grid">
+                    <div class="hardware-item">
+                        <div class="label">Model</div>
+                        <div class="value">FortiGate 200F</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">Form Factor</div>
+                        <div class="value">1U Rackmount</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">OS</div>
+                        <div class="value">FortiOS 7.x</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">Security Processor</div>
+                        <div class="value">SP5 + CP9</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">Firewall Throughput</div>
+                        <div class="value">20 Gbps</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">IPS Throughput</div>
+                        <div class="value">3.6 Gbps</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">Threat Protection</div>
+                        <div class="value">900 Mbps</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">SSL Inspection</div>
+                        <div class="value">700 Mbps</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">Concurrent Sessions</div>
+                        <div class="value">1,500,000</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">GE Ports</div>
+                        <div class="value">17 x RJ45</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">SFP Ports</div>
+                        <div class="value">2 x 1G SFP</div>
+                    </div>
+                    <div class="hardware-item">
+                        <div class="label">HA Ports</div>
+                        <div class="value">2 x RJ45</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -632,25 +746,25 @@
         <!-- SECURITY ZONES -->
         <section class="section">
             <h2 class="section-title">Security Zone Architecture</h2>
-            <p class="section-subtitle">Three-tier security zone design with strict traffic control between zones.</p>
+            <p class="section-subtitle">Three-tier security zone design with strict traffic control between zones, mapped to FortiGate 200F physical interfaces.</p>
 
             <div class="zone-grid">
                 <div class="zone-card internal">
                     <div class="zone-icon">🏢</div>
                     <h3>Internal Network</h3>
-                    <p>Trusted corporate network with workstations, internal servers, and business applications.</p>
+                    <p>Trusted corporate network with workstations, internal servers, and business applications. Connected to FortiGate via internal switch.</p>
                     <span class="trust-level">High Trust</span>
                 </div>
                 <div class="zone-card dmz">
                     <div class="zone-icon">🛡️</div>
                     <h3>DMZ (Demilitarized Zone)</h3>
-                    <p>Semi-trusted zone hosting public-facing services: web servers, mail gateway, VPN concentrator.</p>
+                    <p>Semi-trusted zone hosting public-facing services: HRIS, PPS, Nextcloud, and Guacamole gateway servers.</p>
                     <span class="trust-level">Medium Trust</span>
                 </div>
                 <div class="zone-card external">
                     <div class="zone-icon">🌐</div>
                     <h3>External / Internet</h3>
-                    <p>Untrusted external network. All traffic from this zone is treated as potentially malicious.</p>
+                    <p>Untrusted external network connected via ISP. All traffic from this zone is treated as potentially malicious.</p>
                     <span class="trust-level">Untrusted</span>
                 </div>
             </div>
@@ -659,7 +773,7 @@
         <!-- BEFORE vs AFTER -->
         <section class="section">
             <h2 class="section-title">Before vs After</h2>
-            <p class="section-subtitle">Significant improvements in network security posture after FortiGate implementation.</p>
+            <p class="section-subtitle">Significant improvements in network security posture after FortiGate 200F implementation.</p>
             
             <table class="comparison-table">
                 <thead>
@@ -683,12 +797,12 @@
                     <tr>
                         <td><strong>Threat Prevention</strong></td>
                         <td class="before">No IPS/AV/Web filtering</td>
-                        <td class="after">Multi-layer security profiles</td>
+                        <td class="after">Multi-layer security profiles (SP5 accelerated)</td>
                     </tr>
                     <tr>
                         <td><strong>NAT Management</strong></td>
                         <td class="before">Manual, inconsistent NAT rules</td>
-                        <td class="after">Centralized NAT policies</td>
+                        <td class="after">Centralized NAT policies with VIP</td>
                     </tr>
                     <tr>
                         <td><strong>Policy Management</strong></td>
@@ -718,7 +832,7 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">20+</div>
-                    <div class="metric-label">NAT Rules</div>
+                    <div class="metric-label">NAT / VIP Rules</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">70%</div>
@@ -738,10 +852,12 @@
         <!-- TECH STACK -->
         <section class="section">
             <h2 class="section-title">Tech Stack</h2>
-            <p class="section-subtitle">FortiGate NGFW features and technologies utilized in this implementation.</p>
+            <p class="section-subtitle">FortiGate 200F features and technologies utilized in this implementation.</p>
             <div class="tech-stack">
-                <span class="tech-badge">FortiGate NGFW</span>
-                <span class="tech-badge">FortiOS 7.x</span>
+                <span class="tech-badge highlight">FortiGate 200F</span>
+                <span class="tech-badge highlight">FortiOS 7.x</span>
+                <span class="tech-badge">SP5 Security Processor</span>
+                <span class="tech-badge">CP9 Processor</span>
                 <span class="tech-badge">Zone-Based Policy</span>
                 <span class="tech-badge">IPv4/IPv6 Support</span>
                 <span class="tech-badge">Source NAT (SNAT)</span>
@@ -755,9 +871,59 @@
                 <span class="tech-badge">Web Filtering</span>
                 <span class="tech-badge">Application Control</span>
                 <span class="tech-badge">SSL Inspection</span>
+                <span class="tech-badge">DNS Filtering</span>
                 <span class="tech-badge">Logging & Reporting</span>
-                <span class="tech-badge">FortiAnalyzer (optional)</span>
+                <span class="tech-badge">FortiGuard Services</span>
             </div>
+        </section>
+
+        <!-- INTERFACE MAPPING -->
+        <section class="section">
+            <h2 class="section-title">Interface & Zone Mapping</h2>
+            <p class="section-subtitle">Physical interface assignment on FortiGate 200F for each security zone.</p>
+
+            <table class="policy-table">
+                <thead>
+                    <tr>
+                        <th>Interface</th>
+                        <th>Zone</th>
+                        <th>Role</th>
+                        <th>IP / Mode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>port1 - port8</strong></td>
+                        <td>Internal</td>
+                        <td>LAN connectivity to internal switch</td>
+                        <td>192.168.x.x/24</td>
+                    </tr>
+                    <tr>
+                        <td><strong>port9 - port12</strong></td>
+                        <td>DMZ</td>
+                        <td>DMZ server connectivity</td>
+                        <td>172.16.x.x/24</td>
+                    </tr>
+                    <tr>
+                        <td><strong>port13 (WAN1)</strong></td>
+                        <td>External</td>
+                        <td>Primary ISP uplink</td>
+                        <td>Public IP (PPPoE/Static)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>port14 (WAN2)</strong></td>
+                        <td>External</td>
+                        <td>Backup ISP / SD-WAN</td>
+                        <td>Public IP (Standby)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MGMT Port</strong></td>
+                        <td>Management</td>
+                        <td>Out-of-band management access</td>
+                        <td>Dedicated MGMT IP</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <!-- SECURITY POLICIES -->
@@ -783,7 +949,7 @@
                         <td>External</td>
                         <td>HTTP/HTTPS/DNS</td>
                         <td class="action-allow">ALLOW</td>
-                        <td>AV, Web Filter, IPS</td>
+                        <td>AV, Web Filter, IPS, DNS Filter</td>
                     </tr>
                     <tr>
                         <td><strong>Internal to DMZ</strong></td>
@@ -840,7 +1006,7 @@
         <!-- KEY FEATURES -->
         <section class="section">
             <h2 class="section-title">Key Features Implemented</h2>
-            <p class="section-subtitle">Core firewall capabilities configured for comprehensive security.</p>
+            <p class="section-subtitle">Core firewall capabilities configured for comprehensive security on FortiGate 200F.</p>
 
             <div class="feature-grid">
                 <div class="feature-item">
@@ -867,8 +1033,8 @@
                 <div class="feature-item">
                     <div class="check">✓</div>
                     <div>
-                        <h4>Intrusion Prevention (IPS)</h4>
-                        <p>Real-time detection and blocking of known exploits and attack patterns.</p>
+                        <h4>Hardware-Accelerated IPS</h4>
+                        <p>SP5 processor accelerates intrusion prevention for high throughput without performance loss.</p>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -882,14 +1048,14 @@
                     <div class="check">✓</div>
                     <div>
                         <h4>Web Filtering</h4>
-                        <p>Category-based web access control to block malicious, inappropriate, or non-business sites.</p>
+                        <p>Category-based web access control powered by FortiGuard to block malicious sites.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="check">✓</div>
                     <div>
                         <h4>Application Control</h4>
-                        <p>Identify and control applications regardless of port or protocol (e.g., block P2P, allow only approved SaaS).</p>
+                        <p>Identify and control applications regardless of port or protocol (e.g., block P2P).</p>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -902,15 +1068,15 @@
                 <div class="feature-item">
                     <div class="check">✓</div>
                     <div>
-                        <h4>Comprehensive Logging</h4>
-                        <p>All traffic logged with detailed information for audit, troubleshooting, and forensics.</p>
+                        <h4>DNS Filtering</h4>
+                        <p>Block DNS resolution to known malicious domains via FortiGuard DNS threat feed.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="check">✓</div>
                     <div>
-                        <h4>Policy Optimization</h4>
-                        <p>Regular review and cleanup of unused policies to maintain performance and security.</p>
+                        <h4>Comprehensive Logging</h4>
+                        <p>All traffic logged with detailed information for audit, troubleshooting, and forensics.</p>
                     </div>
                 </div>
             </div>
@@ -919,44 +1085,71 @@
         <!-- ARCHITECTURE -->
         <section class="section">
             <h2 class="section-title">Network Architecture</h2>
-            <p class="section-subtitle">Traffic flow through FortiGate NGFW with zone-based security enforcement.</p>
+            <p class="section-subtitle">Traffic flow through FortiGate 200F with zone-based security enforcement.</p>
 
             <div class="diagram-box">
                 <div class="placeholder-icon">🔥</div>
-                <p><strong>[FortiGate Network Architecture Diagram]</strong></p>
+                <p><strong>[FortiGate 200F Network Architecture Diagram]</strong></p>
                 <p style="font-size: 0.9em; margin-top: 15px; line-height: 1.8;">
-                    <code>Internal Network</code> ↔ <code>FortiGate NGFW</code> ↔ <code>DMZ Servers</code><br>
-                    <code>FortiGate NGFW</code> ↔ <code>Internet (ISP)</code>
+                    <code>Internal Switch</code> → <code>FGT-200F (port1-8)</code><br>
+                    <code>DMZ Switch</code> → <code>FGT-200F (port9-12)</code><br>
+                    <code>FGT-200F (port13/14)</code> → <code>ISP / Internet</code>
                 </p>
                 <p style="font-size: 0.85em; margin-top: 10px; opacity: 0.7;">
-                    💡 Tip: Create diagram showing: Internal Switch → FortiGate (port1: internal, port2: DMZ, port3: WAN) → Internet
+                    💡 Tip: Create diagram showing physical topology with FortiGate 200F at the center, connecting all three zones
                 </p>
             </div>
 
             <div class="code-block">
-<span class="comment"># Example FortiGate CLI configuration for security policy</span>
+<span class="comment"># Example FortiGate 200F CLI configuration for security policy</span>
+<span class="keyword">config system interface</span>
+    <span class="keyword">edit "port1"</span>
+        set ip 192.168.10.1 255.255.255.0
+        set alias "Internal"
+    <span class="keyword">next</span>
+    <span class="keyword">edit "port9"</span>
+        set ip 172.16.10.1 255.255.255.0
+        set alias "DMZ"
+    <span class="keyword">next</span>
+<span class="keyword">end</span>
+
+<span class="keyword">config firewall vip</span>
+    <span class="keyword">edit "DMZ-Web-VIP"</span>
+        set extip &lt;public-ip&gt;
+        set extintf "port13"
+        set mappedip "172.16.10.10"
+        set portforward enable
+        set extport 443
+        set mappedport 443
+    <span class="keyword">next</span>
+<span class="keyword">end</span>
+
 <span class="keyword">config firewall policy</span>
     <span class="keyword">edit 1</span>
         set name "Internal to Internet"
-        set srcintf "internal"
-        set dstintf "wan1"
+        set srcintf "port1"
+        set dstintf "port13"
         set srcaddr "all"
         set dstaddr "all"
         set action accept
         set service "HTTP" "HTTPS" "DNS"
         set logtraffic all
-        set groups "IPS" "Antivirus" "Web-Filter"
+        set utm-status enable
+        set av-profile "default"
+        set webfilter-profile "default"
+        set ips-sensor "default"
     <span class="keyword">next</span>
     <span class="keyword">edit 2</span>
         set name "Internet to DMZ Web"
-        set srcintf "wan1"
-        set dstintf "dmz"
+        set srcintf "port13"
+        set dstintf "port9"
         set srcaddr "all"
-        set dstaddr "Web-Server-VIP"
+        set dstaddr "DMZ-Web-VIP"
         set action accept
-        set service "HTTP" "HTTPS"
+        set service "HTTPS"
         set logtraffic all
-        set groups "IPS" "Antivirus"
+        set utm-status enable
+        set ips-sensor "high-security"
     <span class="keyword">next</span>
 <span class="keyword">end</span>
             </div>
@@ -965,15 +1158,16 @@
         <!-- SECURITY PROFILES -->
         <section class="section">
             <h2 class="section-title">Security Profiles Configuration</h2>
-            <p class="section-subtitle">Multi-layered security profiles applied to relevant policies.</p>
+            <p class="section-subtitle">Multi-layered security profiles applied to relevant policies, powered by FortiGuard Labs.</p>
 
             <div class="profiles-box">
                 <h3>🛡️ Security Profile Details</h3>
                 <ul>
-                    <li><strong>IPS Profile:</strong> High-security profile with blocking enabled for critical and high-severity vulnerabilities</li>
+                    <li><strong>IPS Profile:</strong> High-security profile with blocking enabled for critical and high-severity vulnerabilities, accelerated by SP5 processor</li>
                     <li><strong>Antivirus Profile:</strong> Protocol-based scanning for HTTP, FTP, SMTP, POP3, IMAP with malware action set to block</li>
-                    <li><strong>Web Filter Profile:</strong> Category-based filtering blocking malware, phishing, adult content, and non-business categories</li>
+                    <li><strong>Web Filter Profile:</strong> FortiGuard category-based filtering blocking malware, phishing, adult content, and non-business categories</li>
                     <li><strong>Application Control:</strong> Block P2P, proxy, and unauthorized applications; allow only business-approved SaaS</li>
+                    <li><strong>DNS Filter:</strong> Block resolution of malicious domains using FortiGuard DNS threat feed</li>
                     <li><strong>SSL/SSH Inspection:</strong> Certificate-inspection mode for HTTPS; deep-inspection for critical servers</li>
                     <li><strong>File Filter:</strong> Block executable files and dangerous file types from external sources</li>
                 </ul>
@@ -986,14 +1180,15 @@
             <p class="section-subtitle">Specific contributions as a <strong>Network Security Engineer</strong>.</p>
             <ul style="margin-left: 25px; margin-top: 15px;">
                 <li style="margin-bottom: 10px;">Designed zone-based network architecture with clear traffic flow boundaries</li>
-                <li style="margin-bottom: 10px;">Configured FortiGate NGFW interfaces and zone assignments</li>
+                <li style="margin-bottom: 10px;">Deployed and commissioned FortiGate 200F hardware with FortiOS 7.x</li>
+                <li style="margin-bottom: 10px;">Mapped physical interfaces (port1-14) to security zones (Internal, DMZ, External)</li>
                 <li style="margin-bottom: 10px;">Developed comprehensive security policy set (50+ policies) for all zone combinations</li>
                 <li style="margin-bottom: 10px;">Implemented Source NAT for internal internet access and Destination NAT (VIP) for DMZ services</li>
-                <li style="margin-bottom: 10px;">Configured security profiles (IPS, AV, Web Filter, App Control) per policy requirement</li>
+                <li style="margin-bottom: 10px;">Configured security profiles (IPS, AV, Web Filter, App Control, DNS Filter) per policy requirement</li>
                 <li style="margin-bottom: 10px;">Set up SSL inspection for encrypted traffic analysis</li>
                 <li style="margin-bottom: 10px;">Enabled comprehensive logging for all policies with log analysis</li>
                 <li style="margin-bottom: 10px;">Conducted policy testing and validation with stakeholders</li>
-                <li style="margin-bottom: 10px;">Documented all policies, NAT rules, and network architecture</li>
+                <li style="margin-bottom: 10px;">Documented all policies, NAT rules, VIP mappings, and network architecture</li>
                 <li style="margin-bottom: 10px;">Provided training to IT team on FortiGate management and policy troubleshooting</li>
             </ul>
         </section>
@@ -1006,12 +1201,13 @@
                     <li>Start with a "deny-all" baseline and selectively allow only necessary traffic — this is the foundation of secure firewall design.</li>
                     <li>Policy naming convention is critical for long-term maintainability (e.g., "Source-to-Destination-Service").</li>
                     <li>Regular policy audit is essential — unused rules accumulate over time and create security gaps.</li>
-                    <li>SSL inspection can impact performance; test thoroughly before enabling on high-traffic policies.</li>
+                    <li>SSL inspection can impact performance; leverage SP5 hardware acceleration and test thoroughly before enabling on high-traffic policies.</li>
                     <li>DMZ servers should have minimal outbound access — only allow what's absolutely necessary (DNS, updates).</li>
                     <li>Logging everything is important, but log rotation and storage planning must be considered early.</li>
                     <li>Involve application owners during policy design to understand legitimate traffic patterns.</li>
                     <li>Document the "why" behind each policy, not just the "what" — this helps during future audits and troubleshooting.</li>
-                    <li>Test failover scenarios even without HA — understand what happens if the firewall goes down (fail-open vs fail-closed).</li>
+                    <li>FortiGate 200F's multiple GE ports make interface planning critical — label and document port-to-zone mapping clearly.</li>
+                    <li>Even without HA, plan for manual failover procedures and document recovery steps.</li>
                 </ul>
             </div>
         </section>
