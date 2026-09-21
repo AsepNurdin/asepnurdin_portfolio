@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Report: Nextcloud Self-Hosted Platform | Asep Nurdin</title>
+    <meta name="description" content="Technical documentation for Nextcloud self-hosted collaboration platform implementation.">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">AN<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="index.html" class="active">Projects</a></li>
+                <li><a href="../index.html#contact" class="btn-nav">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-detail-header">
+        <div class="container">
+            <a href="project-application.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Application Projects
+            </a>
+            <div class="header-meta">
+                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2026</span>
+                <span class="meta-tag"><i class="fas fa-building"></i> Enterprise Client</span>
+                <span class="meta-tag"><i class="fas fa-clock"></i> 3 Weeks</span>
+                <span class="meta-tag"><i class="fas fa-users"></i> 100+ Users</span>
+                <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
+            </div>
+            <h1 class="project-title">Nextcloud Self-Hosted Collaboration Platform</h1>
+            <p class="project-subtitle">
+                Replacing public cloud storage with a secure, self-hosted Nextcloud instance for enterprise file sharing, real-time collaboration, and complete data sovereignty.
+            </p>
+        </div>
+    </header>
+
+    <!-- Document Content -->
+    <section class="project-detail-content">
+        <div class="container">
+            
+            <!-- Document Info Table -->
+            <div class="doc-info-container">
+                <div class="doc-info-grid">
+                    <div class="doc-info-item"><strong>Project Name:</strong> Enterprise File Collaboration</div>
+                    <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
+                    <div class="doc-info-item"><strong>Role:</strong> Infrastructure & Application Engineer</div>
+                    <div class="doc-info-item"><strong>Version:</strong> 1.0</div>
+                </div>
+            </div>
+
+            <!-- 01. Project Overview -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">01.</span> Project Overview</h2>
+                <p>
+                    Migrating from public cloud storage (Google Workspace/Dropbox) to a fully self-hosted Nextcloud Hub deployed in the corporate DMZ, ensuring complete data sovereignty and reducing recurring SaaS costs.
+                </p>
+
+                <h3 class="sub-heading"><i class="fas fa-bullseye accent"></i> The Challenge</h3>
+                <p>
+                    Sensitive corporate documents stored on public cloud services posed data sovereignty risks. Recurring subscription costs were high, and IT had zero control over data residency, compliance, and granular access policies.
+                </p>
+
+                <h3 class="sub-heading"><i class="fas fa-lightbulb accent"></i> The Solution</h3>
+                <p>
+                    Nextcloud Hub deployed on a dedicated Proxmox VM (Ubuntu 22.04) with Nginx, PHP-FPM, MariaDB, and Redis. Integrated with Active Directory (LDAP) for Single Sign-On (SSO) and secured with strict hardening policies.
+                </p>
+
+                <h3 class="sub-heading"><i class="fas fa-star accent"></i> The Result</h3>
+                <p>
+                    100% data sovereignty, 60% reduction in annual cloud subscription costs, seamless real-time collaboration via OnlyOffice, and unified identity management via LDAP/AD integration.
+                </p>
+            </div>
+
+            <!-- 02. Key Metrics -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">02.</span> Key Metrics</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-users accent"></i> 100+ Active Users</h3>
+                        <p>Successfully onboarded 100+ internal employees across multiple departments.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-database accent"></i> 2TB+ Storage</h3>
+                        <p>Managed over 2TB of corporate documents with automated backup and versioning.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-coins accent"></i> 60% Cost Reduction</h3>
+                        <p>Eliminated recurring public cloud SaaS fees, achieving ROI within 6 months.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-shield-alt accent"></i> 100% Data Sovereignty</h3>
+                        <p>All data resides on-premises, fully compliant with internal data governance policies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 03. Tech Stack -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">03.</span> Tech Stack</h2>
+                <p>Core technologies powering the Nextcloud Hub deployment.</p>
+                <div class="tech-stack-grid">
+                    <div class="tech-item"><i class="fas fa-cloud"></i> Nextcloud Hub 27</div>
+                    <div class="tech-item"><i class="fas fa-server"></i> Nginx Web Server</div>
+                    <div class="tech-item"><i class="fab fa-php"></i> PHP 8.1-FPM</div>
+                    <div class="tech-item"><i class="fas fa-database"></i> MariaDB 10.6</div>
+                    <div class="tech-item"><i class="fas fa-memory"></i> Redis (Caching & Locking)</div>
+                    <div class="tech-item"><i class="fab fa-ubuntu"></i> Ubuntu 22.04 LTS</div>
+                    <div class="tech-item"><i class="fas fa-lock"></i> Let's Encrypt SSL</div>
+                    <div class="tech-item"><i class="fas fa-users-cog"></i> LDAP/AD Integration</div>
+                    <div class="tech-item"><i class="fas fa-file-word"></i> OnlyOffice / Collabora</div>
+                    <div class="tech-item"><i class="fas fa-video"></i> Nextcloud Talk (HPB)</div>
+                </div>
+            </div>
+
+            <!-- 04. Key Features Implemented -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">04.</span> Key Features Implemented</h2>
+                <p>Enterprise-grade collaboration features configured for seamless internal workflow.</p>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>File Sharing & Sync</strong>
+                            <p>Secure file synchronization across Desktop (Windows/Mac/Linux) and Mobile (iOS/Android) clients with link sharing and expiration dates.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Real-Time Document Editing</strong>
+                            <p>Integrated OnlyOffice for real-time collaborative editing of Word, Excel, and PowerPoint documents directly in the browser.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>LDAP/AD Single Sign-On</strong>
+                            <p>Seamless authentication using corporate Active Directory credentials. No separate passwords to manage.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>External Storage Mounting</strong>
+                            <p>Mounted existing SMB/NFS network shares as external storage within Nextcloud for unified access.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Versioning & Trashbin</strong>
+                            <p>Automatic file versioning and 30-day trashbin retention to prevent accidental data loss.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Two-Factor Authentication (2FA)</strong>
+                            <p>Enforced TOTP-based 2FA for all users accessing Nextcloud from external networks.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 05. Architecture Overview -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">05.</span> Architecture Overview</h2>
+                <p>High-performance LEMP stack architecture optimized for Nextcloud.</p>
+
+                <figure class="tech-figure">
+                    <img src="images/nextcloud-architecture.png" alt="Nextcloud Architecture Diagram">
+                    <figcaption>Figure 1: Client → HTTPS (443) → Nginx → PHP-FPM ↔ Redis (Cache) ↔ MariaDB (Data) ↔ SMB/NFS (External Storage)</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">Nginx Hardening Configuration</h3>
+                <pre style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 20px; border-radius: 8px; overflow-x: auto; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.6;"><code>server {
+    listen 443 ssl http2;
+    server_name cloud.company.com;
+
+    # SSL & Security Headers
+    ssl_certificate /etc/letsencrypt/live/cloud.company.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/cloud.company.com/privkey.pem;
+    add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "no-referrer" always;
+
+    # PHP-FPM Configuration
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        fastcgi_buffers 64 4K;
+        fastcgi_busy_buffers_size 128k;
+    }
+}</code></pre>
+            </div>
+
+            <!-- 06. Performance Tuning -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">06.</span> Performance Tuning</h2>
+                <p>Critical optimizations applied to handle 100+ concurrent users smoothly.</p>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-memory accent"></i> PHP OPcache & APCu</h3>
+                        <p>Enabled OPcache for bytecode caching and APCu for local memory caching to reduce PHP execution time.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-database accent"></i> Redis Transactional Locking</h3>
+                        <p>Configured Redis for file locking and transactional file locking to prevent database bottlenecks.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-tasks accent"></i> System Cron Jobs</h3>
+                        <p>Switched from AJAX background jobs to System Cron for reliable execution of maintenance tasks.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-compress-alt accent"></i> Nginx Gzip & Brotli</h3>
+                        <p>Enabled compression for static assets (CSS, JS, fonts) to reduce bandwidth and improve load times.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 07. Security Hardening -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">07.</span> Security Hardening</h2>
+                <p>Security measures implemented to protect the self-hosted platform.</p>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>HSTS & SSL/TLS 1.3</strong>
+                            <p>Enforced HTTPS with HTTP Strict Transport Security and modern TLS protocols only.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-shield"></i>
+                        <div>
+                            <strong>Brute-Force Protection</strong>
+                            <p>Enabled Nextcloud built-in brute-force protection and integrated Fail2ban at the OS level.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-key"></i>
+                        <div>
+                            <strong>Encryption at Rest</strong>
+                            <p>Enabled server-side encryption for sensitive folders using OpenSSL keys managed by IT.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-signature"></i>
+                        <div>
+                            <strong>File Integrity Check</strong>
+                            <p>Regular integrity scans to detect unauthorized modifications to core Nextcloud files.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-ban"></i>
+                        <div>
+                            <strong>Disabled Public Registration</strong>
+                            <p>Disabled public user registration; all accounts must be provisioned via LDAP/AD sync.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 08. My Role & Responsibilities -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">08.</span> My Role & Responsibilities</h2>
+                <p>End-to-end implementation as Infrastructure & Application Engineer.</p>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Architecture Design</strong>
+                            <p>Designed the LEMP stack architecture and resource allocation for the Nextcloud VM.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Server Deployment</strong>
+                            <p>Deployed Ubuntu 22.04 VM on Proxmox and installed the full LEMP stack (Nginx, PHP, MariaDB, Redis).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Nextcloud Installation</strong>
+                            <p>Installed and configured Nextcloud Hub 27 with all required enterprise apps.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>LDAP/AD Integration</strong>
+                            <p>Configured LDAP integration for seamless SSO and automatic user/group synchronization.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Performance Tuning</strong>
+                            <p>Tuned PHP-FPM, OPcache, Redis, and Nginx for optimal performance under load.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Security Hardening</strong>
+                            <p>Applied HSTS, 2FA, brute-force protection, and file encryption at rest.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Data Migration</strong>
+                            <p>Migrated 2TB+ of data from public cloud to the new on-premises Nextcloud instance.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>User Training & SOP</strong>
+                            <p>Conducted training sessions for 100+ users and documented administration SOPs.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 09. Lessons Learned -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">09.</span> Lessons Learned</h2>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>PHP Tuning is Critical</strong>
+                            <p>Default PHP-FPM settings are insufficient for 100+ users. Tuning `pm.max_children` and `memory_limit` is mandatory.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Redis for Locking</strong>
+                            <p>Using the database for file locking causes severe bottlenecks. Redis transactional locking is a must for production.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>System Cron over AJAX</strong>
+                            <p>Background jobs must use System Cron, not AJAX, to ensure reliable execution of maintenance and sync tasks.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>LDAP Caching</strong>
+                            <p>LDAP queries can be slow. Enable LDAP caching in Nextcloud to reduce authentication latency.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Regular Integrity Scans</strong>
+                            <p>Run `occ integrity:check-core` regularly to ensure no core files have been tampered with or corrupted.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Backup the Config Directory</strong>
+                            <p>The `config/config.php` file contains encryption keys and DB credentials. Backing it up is as critical as the database itself.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Asep Nurdin. All rights reserved.</p>
+                    <p class="footer-credit">Built with <i class="fas fa-code"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/asepnurdin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AsepNurdin" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:asepnurdin1994@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Force Justify Script -->
+    <script src="js/force-justify.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } 
+            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+        });
+    </script>
+</body>
+</html>
