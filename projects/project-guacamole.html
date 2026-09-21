@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Report: Apache Guacamole Remote Access Gateway | Asep Nurdin</title>
-    <meta name="description" content="Technical documentation for Apache Guacamole clientless remote access gateway implementation.">
+    <meta name="description" content="Technical documentation for Apache Guacamole clientless remote access gateway implementation for external vendor access.">
     
     <link rel="stylesheet" href="css/projects.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,12 +41,12 @@
                 <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2026</span>
                 <span class="meta-tag"><i class="fas fa-building"></i> Enterprise Client</span>
                 <span class="meta-tag"><i class="fas fa-clock"></i> 6 Weeks</span>
-                <span class="meta-tag"><i class="fas fa-users"></i> 50+ Users</span>
+                <span class="meta-tag"><i class="fas fa-users"></i> 50+ External Users</span>
                 <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
             </div>
             <h1 class="project-title">Apache Guacamole Remote Access Gateway</h1>
             <p class="project-subtitle">
-                Building a secure, clientless web-based remote access gateway for RDP, SSH, and VNC — no client installation required on the user side.
+                Internet-facing clientless gateway for external vendor access — secure RDP/SSH/VNC without VPN, accessible from anywhere via web browser.
             </p>
         </div>
     </header>
@@ -58,7 +58,7 @@
             <!-- Document Info Table -->
             <div class="doc-info-container">
                 <div class="doc-info-grid">
-                    <div class="doc-info-item"><strong>Project Name:</strong> Secure Remote Access Gateway</div>
+                    <div class="doc-info-item"><strong>Project Name:</strong> External Vendor Access Gateway</div>
                     <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
                     <div class="doc-info-item"><strong>Role:</strong> Infrastructure Engineer</div>
                     <div class="doc-info-item"><strong>Version:</strong> 1.0</div>
@@ -69,68 +69,68 @@
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">01.</span> Project Overview</h2>
                 <p>
-                    Modernizing remote access from traditional solutions (VPN + RDP client) to a centralized web-based gateway with complete audit trails.
+                    Deployed internet-facing Apache Guacamole in DMZ to provide secure remote access for external vendors and third-party support teams — eliminating VPN requirements while maintaining strict security controls.
                 </p>
 
                 <h3 class="sub-heading"><i class="fas fa-bullseye accent"></i> The Challenge</h3>
                 <p>
-                    IT teams and vendors accessing servers via scattered VPN + RDP clients, lacking audit trails, difficult to manage, and prone to credential sharing.
+                    External vendors and support teams requiring VPN access for server maintenance and troubleshooting. VPN setup was complex, time-consuming (2-3 hours per vendor), difficult to audit, and posed security risks with credential sharing.
                 </p>
 
                 <h3 class="sub-heading"><i class="fas fa-lightbulb accent"></i> The Solution</h3>
                 <p>
-                    Apache Guacamole as a centralized gateway with session recording, native database authentication, and SSL reverse proxy.
+                    Internet-facing Apache Guacamole deployed in DMZ with strict security hardening, providing browser-based access without VPN. Vendors can access designated servers via HTTPS from anywhere using only a web browser.
                 </p>
 
                 <h3 class="sub-heading"><i class="fas fa-star accent"></i> The Result</h3>
                 <p>
-                    Zero client installation, full audit trail, centralized connection management, and elimination of VPN requirements for basic remote access.
+                    Zero VPN dependencies, 95% reduction in vendor onboarding time (from 2-3 hours to 5 minutes), complete session audit trails, and granular access control for external parties.
                 </p>
             </div>
 
             <!-- 02. Before vs After -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">02.</span> Before vs After</h2>
-                <p>Significant comparison before and after Guacamole implementation.</p>
+                <p>Comparison of vendor access methods before and after Guacamole implementation.</p>
                 
                 <table style="width: 100%; border-collapse: collapse; margin-top: 20px; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
                     <thead>
                         <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border);">
                             <th style="text-align: left; padding: 15px; color: var(--text-primary);">Aspect</th>
-                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">Before</th>
-                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">After</th>
+                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">Before (VPN)</th>
+                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">After (Guacamole)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Client Requirement</strong></td>
-                            <td style="padding: 15px;">Install RDP/SSH client + VPN</td>
-                            <td style="padding: 15px;">Browser only (HTML5)</td>
+                            <td style="padding: 15px;"><strong>Access Method</strong></td>
+                            <td style="padding: 15px;">VPN client + RDP/SSH client</td>
+                            <td style="padding: 15px;">Web browser only (HTTPS)</td>
                         </tr>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Authentication</strong></td>
-                            <td style="padding: 15px;">Password only, scattered</td>
-                            <td style="padding: 15px;">Centralized database authentication</td>
+                            <td style="padding: 15px;"><strong>Network Access</strong></td>
+                            <td style="padding: 15px;">Full internal network access</td>
+                            <td style="padding: 15px;">DMZ only, specific servers</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 15px;"><strong>Vendor Onboarding</strong></td>
+                            <td style="padding: 15px;">2-3 hours (VPN setup)</td>
+                            <td style="padding: 15px;">5 minutes (browser URL + credentials)</td>
                         </tr>
                         <tr style="border-bottom: 1px solid var(--border);">
                             <td style="padding: 15px;"><strong>Audit Trail</strong></td>
-                            <td style="padding: 15px;">None</td>
-                            <td style="padding: 15px;">Session recording (video + logs)</td>
+                            <td style="padding: 15px;">VPN logs only, no session recording</td>
+                            <td style="padding: 15px;">Full session recording + access logs</td>
                         </tr>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>Access Management</strong></td>
-                            <td style="padding: 15px;">Credential sharing via chat</td>
-                            <td style="padding: 15px;">Centralized permission per user</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 15px;"><strong>New User Onboarding</strong></td>
-                            <td style="padding: 15px;">2-3 hours (setup VPN + client)</td>
-                            <td style="padding: 15px;">5 minutes (browser only)</td>
+                            <td style="padding: 15px;"><strong>Security Risk</strong></td>
+                            <td style="padding: 15px;">High (full network access via VPN)</td>
+                            <td style="padding: 15px;">Low (DMZ isolation, specific servers only)</td>
                         </tr>
                         <tr>
-                            <td style="padding: 15px;"><strong>Mobile Access</strong></td>
-                            <td style="padding: 15px;">Limited / uncomfortable</td>
-                            <td style="padding: 15px;">Full support via browser</td>
+                            <td style="padding: 15px;"><strong>Device Compatibility</strong></td>
+                            <td style="padding: 15px;">Limited to configured devices</td>
+                            <td style="padding: 15px;">Any device with modern browser</td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,28 +141,28 @@
                 <h2 class="section-heading"><span class="mono-text">03.</span> Key Metrics</h2>
                 <div class="results-grid">
                     <div class="result-card">
-                        <h3><i class="fas fa-users accent"></i> 50+ Active Users</h3>
-                        <p>Successfully adopted by over 50 internal users and external vendors.</p>
+                        <h3><i class="fas fa-users accent"></i> 50+ External Vendors</h3>
+                        <p>Successfully onboarded 50+ external vendors and support teams without VPN.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-network-wired accent"></i> 30+ Connections</h3>
-                        <p>Centralized management for more than 30 server and network device connections.</p>
+                        <h3><i class="fas fa-network-wired accent"></i> 30+ Server Connections</h3>
+                        <p>Centralized access to 30+ production and non-production servers.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-layer-group accent"></i> 3 Protocols</h3>
-                        <p>Unified support for RDP, SSH, and VNC in a single gateway.</p>
+                        <h3><i class="fas fa-clock accent"></i> 95% Faster Onboarding</h3>
+                        <p>Vendor access reduced from 2-3 hours to just 5 minutes.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-server accent"></i> 99.9% Uptime</h3>
-                        <p>Highly available gateway ensuring uninterrupted remote access.</p>
+                        <h3><i class="fas fa-shield-alt accent"></i> Zero VPN Dependencies</h3>
+                        <p>Completely eliminated VPN requirements for external vendor access.</p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-video accent"></i> 100% Session Recording</h3>
-                        <p>All remote sessions are recorded for security audit and compliance.</p>
+                        <p>All vendor sessions recorded for compliance and audit purposes.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-laptop accent"></i> 0 Client Installation</h3>
-                        <p>Completely clientless architecture using standard HTML5 web browsers.</p>
+                        <h3><i class="fas fa-globe accent"></i> Internet-Facing</h3>
+                        <p>Accessible from anywhere via HTTPS without corporate network access.</p>
                     </div>
                 </div>
             </div>
@@ -170,7 +170,7 @@
             <!-- 04. Tech Stack -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">04.</span> Tech Stack</h2>
-                <p>Technology components that form this gateway solution.</p>
+                <p>Technology components deployed in DMZ for internet-facing access.</p>
                 <div class="tech-stack-grid">
                     <div class="tech-item"><i class="fas fa-globe"></i> Apache Guacamole 1.5.x</div>
                     <div class="tech-item"><i class="fas fa-cogs"></i> guacd (Daemon)</div>
@@ -178,33 +178,33 @@
                     <div class="tech-item"><i class="fas fa-database"></i> MySQL 8.0</div>
                     <div class="tech-item"><i class="fas fa-shield-alt"></i> Nginx Reverse Proxy</div>
                     <div class="tech-item"><i class="fas fa-lock"></i> Let's Encrypt SSL</div>
-                    <div class="tech-item"><i class="fas fa-key"></i> Native Database Auth</div>
+                    <div class="tech-item"><i class="fas fa-network-wired"></i> DMZ Deployment</div>
                     <div class="tech-item"><i class="fab fa-ubuntu"></i> Ubuntu 22.04 LTS</div>
                     <div class="tech-item"><i class="fas fa-ban"></i> Fail2ban</div>
-                    <div class="tech-item"><i class="fas fa-sync-alt"></i> Logrotate</div>
+                    <div class="tech-item"><i class="fas fa-filter"></i> IP Whitelisting</div>
                 </div>
             </div>
 
             <!-- 05. Supported Protocols -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">05.</span> Supported Protocols</h2>
-                <p>Multi-protocol support in a single unified gateway.</p>
+                <p>Multi-protocol support for various vendor access requirements.</p>
                 <div class="results-grid">
                     <div class="result-card">
                         <h3><i class="fas fa-desktop accent"></i> RDP</h3>
-                        <p>Remote Desktop Protocol for Windows Server & Desktop access. <strong>Port 3389</strong></p>
+                        <p>Remote Desktop Protocol for Windows Server access. <strong>Port 3389</strong></p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-terminal accent"></i> SSH</h3>
-                        <p>Secure Shell for Linux/Unix server & network device access. <strong>Port 22</strong></p>
+                        <p>Secure Shell for Linux/Unix server access. <strong>Port 22</strong></p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-tv accent"></i> VNC</h3>
-                        <p>Virtual Network Computing for Linux/Mac desktop access. <strong>Port 5900</strong></p>
+                        <p>Virtual Network Computing for desktop access. <strong>Port 5900</strong></p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-ethernet accent"></i> Telnet</h3>
-                        <p>Legacy device access for network equipment. <strong>Port 23</strong></p>
+                        <p>Legacy network device access. <strong>Port 23</strong></p>
                     </div>
                 </div>
             </div>
@@ -212,62 +212,62 @@
             <!-- 06. Key Features Implemented -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">06.</span> Key Features Implemented</h2>
-                <p>Main features implemented to meet enterprise requirements.</p>
+                <p>Critical features for secure external vendor access.</p>
                 <ul class="detail-list">
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Clientless Access</strong>
-                            <p>Users only need a modern browser (Chrome, Firefox, Edge) without installing additional applications.</p>
+                            <strong>No VPN Required</strong>
+                            <p>Vendors access servers directly via HTTPS without VPN client installation or configuration.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Native Database Authentication</strong>
-                            <p>Centralized user management in MySQL database with strong password policy.</p>
+                            <strong>Internet-Facing DMZ Deployment</strong>
+                            <p>Deployed in DMZ with strict isolation from internal network, accessible from public internet.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
                             <strong>Session Recording</strong>
-                            <p>Record all RDP/VNC sessions in video format for audit and forensic purposes.</p>
+                            <p>All vendor RDP/VNC sessions recorded in video format for compliance and forensic audit.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Connection Grouping</strong>
-                            <p>Organize connections by team, environment (prod/dev), or business function.</p>
+                            <strong>Granular Access Control</strong>
+                            <p>Per-vendor permissions: specific servers only, no lateral movement allowed.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Granular Permissions</strong>
-                            <p>Role-based access control: admin, user, and custom permissions per connection.</p>
+                            <strong>IP Whitelisting</strong>
+                            <p>Access restricted to known vendor IP addresses and office locations.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Clipboard & File Transfer</strong>
-                            <p>Secure clipboard sharing and file transfer between client and remote host (can be disabled per policy).</p>
+                            <strong>Connection History & Audit Logs</strong>
+                            <p>Complete audit trail: who accessed what server, when, and session duration.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Shared Connections</strong>
-                            <p>Multiple users can collaborate in a single remote session (collaborative support session).</p>
+                            <strong>Temporary Access</strong>
+                            <p>Time-limited access accounts for short-term vendor engagements.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Connection History</strong>
-                            <p>Complete log of who accessed what, when, and for how long — integrated with session recording.</p>
+                            <strong>Disabled File Transfer</strong>
+                            <p>Clipboard and file transfer disabled for production server access to prevent data exfiltration.</p>
                         </div>
                     </li>
                 </ul>
@@ -276,20 +276,64 @@
             <!-- 07. Architecture Overview -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">07.</span> Architecture Overview</h2>
-                <p>Connection flow from end-user to target server through the gateway.</p>
+                <p>Internet-facing deployment in DMZ with multiple security layers.</p>
 
                 <figure class="tech-figure">
-                    <img src="images/guacamole-architecture.png" alt="Guacamole Architecture Diagram">
-                    <figcaption>Figure 1: User Browser → HTTPS (443) → Nginx Reverse Proxy → Guacamole (Tomcat) → guacd Daemon → Target Server</figcaption>
+                    <img src="images/guacamole-architecture.png" alt="Guacamole DMZ Architecture Diagram">
+                    <figcaption>Figure 1: Internet → Firewall (IP Whitelist) → DMZ (Nginx + Guacamole) → Internal Servers (RDP/SSH)</figcaption>
                 </figure>
+
+                <h3 class="sub-heading">Security Layers</h3>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-layer-group"></i>
+                        <div>
+                            <strong>Layer 1: Perimeter Firewall</strong>
+                            <p>Only HTTPS (443) allowed from whitelisted vendor IPs, all other traffic blocked.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-layer-group"></i>
+                        <div>
+                            <strong>Layer 2: DMZ Isolation</strong>
+                            <p>Guacamole deployed in DMZ network segment, isolated from internal corporate network.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-layer-group"></i>
+                        <div>
+                            <strong>Layer 3: Application Security</strong>
+                            <p>SSL/TLS encryption, Fail2ban brute-force protection, session timeout (15 min idle).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-layer-group"></i>
+                        <div>
+                            <strong>Layer 4: Access Control</strong>
+                            <p>Per-vendor permissions, specific server access only, no network discovery.</p>
+                        </div>
+                    </li>
+                </ul>
 
                 <h3 class="sub-heading">Nginx Reverse Proxy Configuration</h3>
                 <pre style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 20px; border-radius: 8px; overflow-x: auto; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.6;"><code>server {
     listen 443 ssl http2;
     server_name guacamole.company.com;
 
+    # SSL Configuration
     ssl_certificate     /etc/letsencrypt/live/guacamole.company.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/guacamole.company.com/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    
+    # Security Headers
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+
+    # IP Whitelisting (Vendor IPs only)
+    allow 203.0.113.0/24;    # Vendor A
+    allow 198.51.100.0/24;   # Vendor B
+    deny all;
 
     # WebSocket support (required for Guacamole)
     location / {
@@ -309,47 +353,47 @@
             <!-- 08. Security Hardening -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">08.</span> Security Hardening</h2>
-                <p>Hardening steps applied because Guacamole is a critical attack surface.</p>
+                <p>Critical hardening measures because Guacamole is internet-facing and accessible from public networks.</p>
                 <div class="results-grid">
                     <div class="result-card">
-                        <h3><i class="fas fa-lock accent"></i> HTTPS Only</h3>
-                        <p>Disable HTTP, redirect all traffic to HTTPS with HSTS header.</p>
+                        <h3><i class="fas fa-lock accent"></i> HTTPS Only with HSTS</h3>
+                        <p>HTTP disabled,强制 HTTPS redirect with HTTP Strict Transport Security header.</p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-filter accent"></i> IP Whitelisting</h3>
-                        <p>Guacamole access only from office IP ranges and corporate VPN.</p>
+                        <p>Access restricted to known vendor IP addresses only via Nginx allow/deny rules.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-ban accent"></i> Fail2ban</h3>
-                        <p>Auto-ban IP after 5 failed login attempts within 10 minutes.</p>
+                        <h3><i class="fas fa-ban accent"></i> Fail2ban Protection</h3>
+                        <p>Auto-ban IP after 5 failed login attempts within 10 minutes to prevent brute-force attacks.</p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-clock accent"></i> Session Timeout</h3>
-                        <p>Auto-logout after 15 minutes of idle time.</p>
+                        <p>Automatic logout after 15 minutes of idle time to prevent unauthorized access.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-user-shield accent"></i> Disable Default User</h3>
-                        <p>Remove/change default guacadmin account immediately after setup.</p>
+                        <h3><i class="fas fa-user-shield accent"></i> Remove Default Accounts</h3>
+                        <p>Default guacadmin account deleted immediately after setup.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-key accent"></i> Complex Password Policy</h3>
-                        <p>Minimum 12 characters, combination of letters/numbers/special chars.</p>
+                        <h3><i class="fas fa-key accent"></i> Strong Password Policy</h3>
+                        <p>Minimum 12 characters with complexity requirements (letters/numbers/special chars).</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-clipboard-list accent"></i> Audit Log</h3>
-                        <p>All login and access activities recorded in MySQL database.</p>
+                        <h3><i class="fas fa-network-wired accent"></i> DMZ Network Isolation</h3>
+                        <p>Guacamole server in DMZ, no direct access to internal corporate network.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-cut accent"></i> Disable Clipboard/File Transfer</h3>
-                        <p>For connections to critical production servers.</p>
+                        <h3><i class="fas fa-cut accent"></i> Disable File Transfer</h3>
+                        <p>Clipboard and file transfer disabled for production server connections.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-video accent"></i> Session Recording</h3>
+                        <p>All vendor sessions recorded and stored with 30-day retention policy.</p>
                     </div>
                     <div class="result-card">
                         <h3><i class="fas fa-sync accent"></i> Regular Security Patching</h3>
-                        <p>Update Guacamole & Tomcat regularly to patch vulnerabilities.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3><i class="fas fa-database accent"></i> MySQL Backup</h3>
-                        <p>Daily database backup containing connection & user configurations.</p>
+                        <p>Monthly security updates for Guacamole, Tomcat, and Ubuntu OS.</p>
                     </div>
                 </div>
             </div>
@@ -357,76 +401,76 @@
             <!-- 09. My Role & Responsibilities -->
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">09.</span> My Role & Responsibilities</h2>
-                <p>Specific contributions as an Infrastructure Engineer.</p>
+                <p>End-to-end implementation as Infrastructure Engineer.</p>
                 <ul class="detail-list">
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Architecture Design</strong>
-                            <p>Designed Guacamole deployment architecture in DMZ with reverse proxy.</p>
+                            <strong>DMZ Architecture Design</strong>
+                            <p>Designed internet-facing Guacamole deployment in DMZ with multi-layer security.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Stack Installation</strong>
-                            <p>Installed and configured Guacamole stack (guacd + Tomcat + MySQL).</p>
+                            <strong>Full Stack Installation</strong>
+                            <p>Installed and configured Guacamole stack (guacd + Tomcat + MySQL) in DMZ.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Authentication Setup</strong>
-                            <p>Set up native database authentication with centralized user management.</p>
+                            <strong>Firewall & Network Configuration</strong>
+                            <p>Configured perimeter firewall rules and DMZ network segmentation.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Reverse Proxy Config</strong>
-                            <p>Configured Nginx reverse proxy with Let's Encrypt SSL.</p>
+                            <strong>Nginx Reverse Proxy with SSL</strong>
+                            <p>Configured Nginx with Let's Encrypt SSL, IP whitelisting, and security headers.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Session Recording</strong>
-                            <p>Set up session recording for all RDP connections to production servers.</p>
+                            <strong>Vendor Access Management</strong>
+                            <p>Created 50+ vendor accounts with granular permissions and server-specific access.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Connection Migration</strong>
-                            <p>Migrated 30+ connections from manual RDP files to centralized gateway.</p>
+                            <strong>Session Recording Setup</strong>
+                            <p>Configured session recording for all vendor RDP connections with 30-day retention.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
                             <strong>Security Hardening</strong>
-                            <p>Security hardening following best practices (fail2ban, IP whitelist, HSTS).</p>
+                            <p>Implemented Fail2ban, IP whitelisting, HSTS, session timeout, and disabled default accounts.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>User Training</strong>
-                            <p>Trained 50+ users and documented usage SOP.</p>
+                            <strong>Vendor Onboarding & Training</strong>
+                            <p>Trained 50+ external vendors on Guacamole usage and documented SOP.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Disaster Recovery</strong>
-                            <p>Set up automated MySQL backup for disaster recovery.</p>
+                            <strong>Automated Backup</strong>
+                            <p>Set up daily MySQL backup for disaster recovery of connection configurations.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Log Management</strong>
-                            <p>Implemented log rotation for session recording files.</p>
+                            <strong>Audit & Compliance</strong>
+                            <p>Implemented audit logging and session recording for compliance requirements.</p>
                         </div>
                     </li>
                 </ul>
@@ -439,57 +483,57 @@
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>WebSocket Support is Critical</strong>
-                            <p>WebSocket support in reverse proxy is critical — without it, Guacamole won't function.</p>
+                            <strong>IP Whitelisting is Critical</strong>
+                            <p>For internet-facing deployments, IP whitelisting at Nginx level is essential — don't rely only on application-level authentication.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>Storage Management</strong>
-                            <p>Session recording consumes significant storage; requires clear retention policy (e.g., 30 days) and logrotate.</p>
+                            <strong>DMZ Isolation is Non-Negotiable</strong>
+                            <p>Never deploy internet-facing Guacamole directly on internal network — always use DMZ with strict firewall rules.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>Authentication Scaling</strong>
-                            <p>Native database authentication is sufficient for small-to-medium scale, but large enterprises should consider LDAP/AD integration.</p>
+                            <strong>Vendor Training is Essential</strong>
+                            <p>Vendors initially resist browser-based access; hands-on training and clear documentation significantly improves adoption.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>User Adoption</strong>
-                            <p>User adoption requires good training; many initially resist because they're accustomed to RDP clients.</p>
+                            <strong>Session Storage Planning</strong>
+                            <p>Session recordings consume significant storage; plan for 30-day retention with automated cleanup (logrotate).</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>Fail2ban Configuration</strong>
-                            <p>Fail2ban is very effective at preventing brute force attacks, but needs internal IP whitelisting to avoid self-lockout.</p>
+                            <strong>Fail2ban Prevents Attacks</strong>
+                            <p>Internet-facing services are constantly scanned; Fail2ban is essential to auto-block brute-force attempts.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>Database Backup</strong>
-                            <p>MySQL database backup must be automated daily — it contains all connection & user configurations.</p>
+                            <strong>WebSocket Configuration is Critical</strong>
+                            <p>Without proper WebSocket support in Nginx, Guacamole connections will fail — test thoroughly before production.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>Performance Tuning</strong>
-                            <p>Tomcat performance tuning (max threads, connection pool) is important when users exceed 50 concurrent.</p>
+                            <strong>Per-Vendor Access Mapping</strong>
+                            <p>Document which vendor has access to which servers — crucial for audit and troubleshooting.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-lightbulb"></i>
                         <div>
-                            <strong>Connection Mapping</strong>
-                            <p>Connection mapping documentation (who accesses what) is very helpful during troubleshooting.</p>
+                            <strong>Regular Security Audits</strong>
+                            <p>Quarterly review of vendor accounts, IP whitelist, and access logs to remove inactive vendors and detect anomalies.</p>
                         </div>
                     </li>
                 </ul>
