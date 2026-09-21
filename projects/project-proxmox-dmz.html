@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Report: DMZ Virtualization with Proxmox VE | Asep Nurdin</title>
-    <meta name="description" content="Technical documentation for DMZ virtualization using Proxmox VE with security isolation and resource optimization.">
+    <meta name="description" content="Technical documentation for new DMZ virtualization setup using Proxmox VE with security isolation and resource optimization.">
     
     <link rel="stylesheet" href="css/projects.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,12 +41,12 @@
                 <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2026</span>
                 <span class="meta-tag"><i class="fas fa-building"></i> Enterprise Client</span>
                 <span class="meta-tag"><i class="fas fa-clock"></i> 2 Months</span>
-                <span class="meta-tag"><i class="fas fa-server"></i> 4 Physical Servers</span>
+                <span class="meta-tag"><i class="fas fa-server"></i> 4 VMs Deployed</span>
                 <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
             </div>
             <h1 class="project-title">DMZ Virtualization with Proxmox VE</h1>
             <p class="project-subtitle">
-                Implementasi single-node Proxmox VE untuk virtualisasi DMZ server dengan fokus pada security isolation dan resource optimization. Konsolidasi 4 server fisik DMZ ke dalam platform virtualisasi terpadu dengan security hardening.
+                Setup baru single-node Proxmox VE untuk virtualisasi DMZ server dengan fokus pada security isolation dan resource optimization. Implementasi dari awal untuk 4 workload DMZ kritis dengan security hardening.
             </p>
         </div>
     </header>
@@ -69,22 +69,22 @@
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">01.</span> Project Overview</h2>
                 <p>
-                    Konsolidasi 4 server fisik DMZ ke dalam platform virtualisasi terpadu dengan security hardening. Proyek ini bertujuan untuk mengoptimalkan resource, meningkatkan security posture, dan menyederhanakan manajemen infrastruktur DMZ.
+                    Implementasi baru platform virtualisasi DMZ menggunakan single-node Proxmox VE untuk men-hosting 4 aplikasi kritis perusahaan. Proyek ini dibangun dari awal dengan fokus pada security isolation, resource optimization, dan centralized management.
                 </p>
 
                 <h3 class="sub-heading"><i class="fas fa-bullseye accent"></i> The Challenge</h3>
                 <p>
-                    4 server fisik DMZ yang boros resource, sulit di-manage, dan memerlukan isolation yang lebih ketat untuk aplikasi kritis (HRIS, PPS, Nextcloud, Guacamole). Setiap server berjalan standalone tanpa centralized management, menyebabkan overhead maintenance yang tinggi dan security posture yang tidak konsisten.
+                    Perusahaan membutuhkan infrastruktur DMZ yang aman dan terisolasi untuk men-hosting aplikasi kritis (HRIS, PPS, Nextcloud, Guacamole) dengan requirement security yang ketat, resource allocation yang terukur, dan centralized management yang mudah di-maintain.
                 </p>
 
                 <h3 class="sub-heading"><i class="fas fa-lightbulb accent"></i> The Solution</h3>
                 <p>
-                    Single-node Proxmox VE dengan network segmentation ketat, firewall rules, dan resource allocation per-VM untuk workload DMZ. Pendekatan ini memungkinkan konsolidasi hardware, centralized management, dan implementasi security policy yang konsisten di seluruh workload.
+                    Single-node Proxmox VE dengan network segmentation ketat, firewall rules, dan resource allocation per-VM untuk workload DMZ. Pendekatan ini memungkinkan konsolidasi resource, centralized management, dan implementasi security policy yang konsisten di seluruh workload.
                 </p>
 
                 <h3 class="sub-heading"><i class="fas fa-star accent"></i> The Result</h3>
                 <p>
-                    Reduksi 50% konsumsi hardware, improved security posture, dan simplified management untuk 4 workload DMZ kritis. Semua aplikasi kini berjalan di platform terpadu dengan monitoring terpusat dan backup otomatis.
+                    Infrastruktur DMZ yang aman, terisolasi, dan teroptimasi untuk 4 workload kritis. Semua aplikasi berjalan di platform terpadu dengan monitoring terpusat, backup otomatis, dan security posture yang kuat.
                 </p>
             </div>
 
@@ -101,12 +101,12 @@
                         <p>Empat virtual machine untuk HRIS, PPS, Nextcloud, dan Apache Guacamole.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-chart-line accent"></i> 50% Hardware Reduction</h3>
-                        <p>Reduksi konsumsi hardware dari 4 server fisik menjadi 1 node Proxmox.</p>
-                    </div>
-                    <div class="result-card">
                         <h3><i class="fas fa-shield-alt accent"></i> 100% Network Isolation</h3>
                         <p>Isolasi penuh DMZ dari internal network dengan VLAN dan firewall rules.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-clock accent"></i> 2 Months Delivery</h3>
+                        <p>Proyek diselesaikan dalam 2 bulan dari perencanaan hingga production-ready.</p>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
             <div class="detail-section">
                 <h2 class="section-heading"><span class="mono-text">04.</span> DMZ Workloads</h2>
                 <p>
-                    4 aplikasi kritis yang di-virtualisasi di DMZ dengan resource allocation spesifik.
+                    4 aplikasi kritis yang di-deploy di DMZ dengan resource allocation spesifik.
                 </p>
                 <ul class="detail-list">
                     <li>
@@ -275,14 +275,14 @@
                         <i class="fas fa-check-circle"></i>
                         <div>
                             <strong>Proxmox VE Installation</strong>
-                            <p>Instalasi dan konfigurasi Proxmox VE single-node dengan ZFS storage.</p>
+                            <p>Instalasi dan konfigurasi Proxmox VE single-node dengan ZFS storage dari awal.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Physical to Virtual Migration</strong>
-                            <p>Migrasi 4 workload dari server fisik ke VM tanpa downtime.</p>
+                            <strong>VM Deployment & Configuration</strong>
+                            <p>Deploy dan konfigurasi 4 VM (HRIS, PPS, Nextcloud, Guacamole) dengan resource allocation yang tepat.</p>
                         </div>
                     </li>
                     <li>
