@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Report: Apache Guacamole Deployment | Asep Nurdin</title>
-    <meta name="description" content="Technical documentation for Apache Guacamole clientless remote desktop gateway implementation.">
+    <title>Technical Report: Apache Guacamole Remote Access Gateway | Asep Nurdin</title>
+    <meta name="description" content="Technical documentation for Apache Guacamole clientless remote access gateway implementation.">
     
     <link rel="stylesheet" href="css/projects.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,13 +38,15 @@
                 <i class="fas fa-arrow-left"></i> Back to Remote Access Projects
             </a>
             <div class="header-meta">
-                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2023 - Present</span>
-                <span class="meta-tag"><i class="fas fa-building"></i> PT Autocomp Systems Indonesia</span>
+                <span class="meta-tag"><i class="fas fa-calendar-alt"></i> 2026</span>
+                <span class="meta-tag"><i class="fas fa-building"></i> Enterprise Client</span>
+                <span class="meta-tag"><i class="fas fa-clock"></i> 6 Weeks</span>
+                <span class="meta-tag"><i class="fas fa-users"></i> 50+ Users</span>
                 <span class="meta-tag"><i class="fas fa-file-alt"></i> Technical Report</span>
             </div>
-            <h1 class="project-title">Apache Guacamole Deployment & Clientless Remote Gateway</h1>
+            <h1 class="project-title">Apache Guacamole Remote Access Gateway</h1>
             <p class="project-subtitle">
-                Comprehensive technical documentation on the implementation of Apache Guacamole as a secure, clientless remote desktop gateway supporting RDP, SSH, and VNC protocols through a web browser.
+                Building a secure, clientless web-based remote access gateway for RDP, SSH, and VNC — no client installation required on the user side.
             </p>
         </div>
     </header>
@@ -56,123 +58,441 @@
             <!-- Document Info Table -->
             <div class="doc-info-container">
                 <div class="doc-info-grid">
-                    <div class="doc-info-item"><strong>Project Name:</strong> Remote Access Gateway</div>
+                    <div class="doc-info-item"><strong>Project Name:</strong> Secure Remote Access Gateway</div>
                     <div class="doc-info-item"><strong>Author:</strong> Asep Nurdin</div>
-                    <div class="doc-info-item"><strong>Role:</strong> IT Infrastructure & Security Specialist</div>
+                    <div class="doc-info-item"><strong>Role:</strong> Infrastructure Engineer</div>
                     <div class="doc-info-item"><strong>Version:</strong> 1.0</div>
                 </div>
             </div>
 
-            <!-- 1. Executive Summary -->
+            <!-- 01. Project Overview -->
             <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">01.</span> Executive Summary</h2>
+                <h2 class="section-heading"><span class="mono-text">01.</span> Project Overview</h2>
                 <p>
-                    To provide secure remote access to the enterprise infrastructure without requiring client software installation, Apache Guacamole was deployed as a clientless remote desktop gateway. This solution enables IT administrators and authorized users to access Windows (RDP), Linux (SSH), and legacy systems (VNC) directly through a web browser with HTML5 support. The implementation significantly improved operational efficiency while maintaining strict security controls and audit trails.
+                    Modernizing remote access from traditional solutions (VPN + RDP client) to a centralized web-based gateway with complete audit trails.
+                </p>
+
+                <h3 class="sub-heading"><i class="fas fa-bullseye accent"></i> The Challenge</h3>
+                <p>
+                    IT teams and vendors accessing servers via scattered VPN + RDP clients, lacking audit trails, difficult to manage, and prone to credential sharing.
+                </p>
+
+                <h3 class="sub-heading"><i class="fas fa-lightbulb accent"></i> The Solution</h3>
+                <p>
+                    Apache Guacamole as a centralized gateway with session recording, native database authentication, and SSL reverse proxy.
+                </p>
+
+                <h3 class="sub-heading"><i class="fas fa-star accent"></i> The Result</h3>
+                <p>
+                    Zero client installation, full audit trail, centralized connection management, and elimination of VPN requirements for basic remote access.
                 </p>
             </div>
 
-            <!-- 2. Architecture Overview -->
+            <!-- 02. Before vs After -->
             <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">02.</span> Architecture Overview</h2>
-                <p>
-                    The Apache Guacamole deployment consists of two main components: guacd (the proxy daemon that handles protocol translation) and the web application (served via Tomcat). The solution is placed behind an Nginx reverse proxy with SSL/TLS termination to ensure encrypted communication. User authentication is integrated with Active Directory (LDAP) for centralized identity management.
-                </p>
+                <h2 class="section-heading"><span class="mono-text">02.</span> Before vs After</h2>
+                <p>Significant comparison before and after Guacamole implementation.</p>
                 
-                <figure class="tech-figure">
-                    <img src="images/guacamole-architecture.png" alt="Apache Guacamole Architecture Diagram">
-                    <figcaption>Figure 1: Apache Guacamole architecture showing Nginx reverse proxy, Tomcat application server, guacd daemon, and target systems.</figcaption>
-                </figure>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20px; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border);">
+                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">Aspect</th>
+                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">Before</th>
+                            <th style="text-align: left; padding: 15px; color: var(--text-primary);">After</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 15px;"><strong>Client Requirement</strong></td>
+                            <td style="padding: 15px;">Install RDP/SSH client + VPN</td>
+                            <td style="padding: 15px;">Browser only (HTML5)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 15px;"><strong>Authentication</strong></td>
+                            <td style="padding: 15px;">Password only, scattered</td>
+                            <td style="padding: 15px;">Centralized database authentication</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 15px;"><strong>Audit Trail</strong></td>
+                            <td style="padding: 15px;">None</td>
+                            <td style="padding: 15px;">Session recording (video + logs)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 15px;"><strong>Access Management</strong></td>
+                            <td style="padding: 15px;">Credential sharing via chat</td>
+                            <td style="padding: 15px;">Centralized permission per user</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 15px;"><strong>New User Onboarding</strong></td>
+                            <td style="padding: 15px;">2-3 hours (setup VPN + client)</td>
+                            <td style="padding: 15px;">5 minutes (browser only)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px;"><strong>Mobile Access</strong></td>
+                            <td style="padding: 15px;">Limited / uncomfortable</td>
+                            <td style="padding: 15px;">Full support via browser</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- 3. Technical Implementation -->
+            <!-- 03. Key Metrics -->
             <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">03.</span> Technical Implementation</h2>
-                
-                <h3 class="sub-heading">3.1 Server Preparation & Dependencies</h3>
-                <p>
-                    The Guacamole server was deployed on Ubuntu 20.04 LTS with the following core dependencies: Apache Tomcat 9, guacd (Guacamole proxy daemon), and required libraries including libguac-client-rdp, libguac-client-ssh, and libguac-client-vnc for protocol support.
-                </p>
+                <h2 class="section-heading"><span class="mono-text">03.</span> Key Metrics</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-users accent"></i> 50+ Active Users</h3>
+                        <p>Successfully adopted by over 50 internal users and external vendors.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-network-wired accent"></i> 30+ Connections</h3>
+                        <p>Centralized management for more than 30 server and network device connections.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-layer-group accent"></i> 3 Protocols</h3>
+                        <p>Unified support for RDP, SSH, and VNC in a single gateway.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-server accent"></i> 99.9% Uptime</h3>
+                        <p>Highly available gateway ensuring uninterrupted remote access.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-video accent"></i> 100% Session Recording</h3>
+                        <p>All remote sessions are recorded for security audit and compliance.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-laptop accent"></i> 0 Client Installation</h3>
+                        <p>Completely clientless architecture using standard HTML5 web browsers.</p>
+                    </div>
+                </div>
+            </div>
 
-                <h3 class="sub-heading">3.2 guacd Configuration</h3>
-                <p>
-                    The guacd proxy daemon was configured to handle protocol translation between the web client and target systems. Custom configuration was applied for session recording, clipboard sharing restrictions, and connection timeout policies to enhance security.
-                </p>
+            <!-- 04. Tech Stack -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">04.</span> Tech Stack</h2>
+                <p>Technology components that form this gateway solution.</p>
+                <div class="tech-stack-grid">
+                    <div class="tech-item"><i class="fas fa-globe"></i> Apache Guacamole 1.5.x</div>
+                    <div class="tech-item"><i class="fas fa-cogs"></i> guacd (Daemon)</div>
+                    <div class="tech-item"><i class="fab fa-java"></i> Apache Tomcat 10</div>
+                    <div class="tech-item"><i class="fas fa-database"></i> MySQL 8.0</div>
+                    <div class="tech-item"><i class="fas fa-shield-alt"></i> Nginx Reverse Proxy</div>
+                    <div class="tech-item"><i class="fas fa-lock"></i> Let's Encrypt SSL</div>
+                    <div class="tech-item"><i class="fas fa-key"></i> Native Database Auth</div>
+                    <div class="tech-item"><i class="fab fa-ubuntu"></i> Ubuntu 22.04 LTS</div>
+                    <div class="tech-item"><i class="fas fa-ban"></i> Fail2ban</div>
+                    <div class="tech-item"><i class="fas fa-sync-alt"></i> Logrotate</div>
+                </div>
+            </div>
 
-                <figure class="tech-figure">
-                    <img src="images/guacd-configuration.png" alt="guacd Configuration">
-                    <figcaption>Figure 2: guacd daemon configuration showing protocol handlers and security parameters.</figcaption>
-                </figure>
+            <!-- 05. Supported Protocols -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">05.</span> Supported Protocols</h2>
+                <p>Multi-protocol support in a single unified gateway.</p>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3><i class="fas fa-desktop accent"></i> RDP</h3>
+                        <p>Remote Desktop Protocol for Windows Server & Desktop access. <strong>Port 3389</strong></p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-terminal accent"></i> SSH</h3>
+                        <p>Secure Shell for Linux/Unix server & network device access. <strong>Port 22</strong></p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-tv accent"></i> VNC</h3>
+                        <p>Virtual Network Computing for Linux/Mac desktop access. <strong>Port 5900</strong></p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-ethernet accent"></i> Telnet</h3>
+                        <p>Legacy device access for network equipment. <strong>Port 23</strong></p>
+                    </div>
+                </div>
+            </div>
 
-                <h3 class="sub-heading">3.3 Nginx Reverse Proxy with SSL/TLS</h3>
-                <p>
-                    Nginx was configured as a reverse proxy in front of Tomcat to provide SSL/TLS termination. Let's Encrypt certificates were used for HTTPS encryption. The configuration includes security headers, rate limiting, and WebSocket support required for Guacamole's real-time communication.
-                </p>
-
-                <h3 class="sub-heading">3.4 Active Directory Integration</h3>
-                <p>
-                    User authentication was integrated with the company's Active Directory via LDAP extension. This enables single sign-on (SSO) capabilities and centralized user management. Role-based access control (RBAC) was implemented to restrict access to specific connections based on user groups.
-                </p>
-
-                <figure class="tech-figure">
-                    <img src="images/guacamole-ldap-integration.png" alt="LDAP Integration">
-                    <figcaption>Figure 3: Active Directory LDAP integration configuration for centralized authentication and authorization.</figcaption>
-                </figure>
-
-                <h3 class="sub-heading">3.5 Connection Configuration</h3>
-                <p>
-                    Remote connections were configured for various target systems:
-                </p>
+            <!-- 06. Key Features Implemented -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">06.</span> Key Features Implemented</h2>
+                <p>Main features implemented to meet enterprise requirements.</p>
                 <ul class="detail-list">
                     <li>
-                        <i class="fab fa-windows"></i>
+                        <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Windows Servers (RDP)</strong>
-                            <p>Remote Desktop Protocol connections with NLA (Network Level Authentication) enabled for secure Windows server access.</p>
+                            <strong>Clientless Access</strong>
+                            <p>Users only need a modern browser (Chrome, Firefox, Edge) without installing additional applications.</p>
                         </div>
                     </li>
                     <li>
-                        <i class="fab fa-linux"></i>
+                        <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Linux Servers (SSH)</strong>
-                            <p>Secure Shell connections with key-based authentication support and terminal recording capabilities.</p>
+                            <strong>Native Database Authentication</strong>
+                            <p>Centralized user management in MySQL database with strong password policy.</p>
                         </div>
                     </li>
                     <li>
-                        <i class="fas fa-desktop"></i>
+                        <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Legacy Systems (VNC)</strong>
-                            <p>Virtual Network Computing connections for legacy systems that don't support RDP or SSH protocols.</p>
+                            <strong>Session Recording</strong>
+                            <p>Record all RDP/VNC sessions in video format for audit and forensic purposes.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Connection Grouping</strong>
+                            <p>Organize connections by team, environment (prod/dev), or business function.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Granular Permissions</strong>
+                            <p>Role-based access control: admin, user, and custom permissions per connection.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Clipboard & File Transfer</strong>
+                            <p>Secure clipboard sharing and file transfer between client and remote host (can be disabled per policy).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Shared Connections</strong>
+                            <p>Multiple users can collaborate in a single remote session (collaborative support session).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Connection History</strong>
+                            <p>Complete log of who accessed what, when, and for how long — integrated with session recording.</p>
                         </div>
                     </li>
                 </ul>
-
-                <h3 class="sub-heading">3.6 Security Hardening</h3>
-                <p>
-                    Multiple security layers were implemented: Two-factor authentication (2FA) via TOTP, IP-based access restrictions, session recording for audit purposes, clipboard and file transfer restrictions, and automatic session timeout for inactive connections.
-                </p>
             </div>
 
-            <!-- 4. Results & Impact -->
+            <!-- 07. Architecture Overview -->
             <div class="detail-section">
-                <h2 class="section-heading"><span class="mono-text">04.</span> Results & Business Impact</h2>
+                <h2 class="section-heading"><span class="mono-text">07.</span> Architecture Overview</h2>
+                <p>Connection flow from end-user to target server through the gateway.</p>
+
+                <figure class="tech-figure">
+                    <img src="images/guacamole-architecture.png" alt="Guacamole Architecture Diagram">
+                    <figcaption>Figure 1: User Browser → HTTPS (443) → Nginx Reverse Proxy → Guacamole (Tomcat) → guacd Daemon → Target Server</figcaption>
+                </figure>
+
+                <h3 class="sub-heading">Nginx Reverse Proxy Configuration</h3>
+                <pre style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 20px; border-radius: 8px; overflow-x: auto; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.6;"><code>server {
+    listen 443 ssl http2;
+    server_name guacamole.company.com;
+
+    ssl_certificate     /etc/letsencrypt/live/guacamole.company.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/guacamole.company.com/privkey.pem;
+
+    # WebSocket support (required for Guacamole)
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_buffering off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}</code></pre>
+            </div>
+
+            <!-- 08. Security Hardening -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">08.</span> Security Hardening</h2>
+                <p>Hardening steps applied because Guacamole is a critical attack surface.</p>
                 <div class="results-grid">
                     <div class="result-card">
-                        <h3><i class="fas fa-globe accent"></i> Clientless Access</h3>
-                        <p>Users can access any remote system through a web browser without installing additional client software.</p>
+                        <h3><i class="fas fa-lock accent"></i> HTTPS Only</h3>
+                        <p>Disable HTTP, redirect all traffic to HTTPS with HSTS header.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-shield-alt accent"></i> Enhanced Security</h3>
-                        <p>Centralized access control with LDAP integration, 2FA, and session recording for compliance auditing.</p>
+                        <h3><i class="fas fa-filter accent"></i> IP Whitelisting</h3>
+                        <p>Guacamole access only from office IP ranges and corporate VPN.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-clock accent"></i> Improved Efficiency</h3>
-                        <p>IT administrators can manage 100+ servers from a single web interface with organized connection groups.</p>
+                        <h3><i class="fas fa-ban accent"></i> Fail2ban</h3>
+                        <p>Auto-ban IP after 5 failed login attempts within 10 minutes.</p>
                     </div>
                     <div class="result-card">
-                        <h3><i class="fas fa-file-audio accent"></i> Audit Compliance</h3>
-                        <p>All remote sessions are recorded and logged, meeting internal security audit and compliance requirements.</p>
+                        <h3><i class="fas fa-clock accent"></i> Session Timeout</h3>
+                        <p>Auto-logout after 15 minutes of idle time.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-user-shield accent"></i> Disable Default User</h3>
+                        <p>Remove/change default guacadmin account immediately after setup.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-key accent"></i> Complex Password Policy</h3>
+                        <p>Minimum 12 characters, combination of letters/numbers/special chars.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-clipboard-list accent"></i> Audit Log</h3>
+                        <p>All login and access activities recorded in MySQL database.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-cut accent"></i> Disable Clipboard/File Transfer</h3>
+                        <p>For connections to critical production servers.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-sync accent"></i> Regular Security Patching</h3>
+                        <p>Update Guacamole & Tomcat regularly to patch vulnerabilities.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-database accent"></i> MySQL Backup</h3>
+                        <p>Daily database backup containing connection & user configurations.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- 09. My Role & Responsibilities -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">09.</span> My Role & Responsibilities</h2>
+                <p>Specific contributions as an Infrastructure Engineer.</p>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Architecture Design</strong>
+                            <p>Designed Guacamole deployment architecture in DMZ with reverse proxy.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Stack Installation</strong>
+                            <p>Installed and configured Guacamole stack (guacd + Tomcat + MySQL).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Authentication Setup</strong>
+                            <p>Set up native database authentication with centralized user management.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Reverse Proxy Config</strong>
+                            <p>Configured Nginx reverse proxy with Let's Encrypt SSL.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Session Recording</strong>
+                            <p>Set up session recording for all RDP connections to production servers.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Connection Migration</strong>
+                            <p>Migrated 30+ connections from manual RDP files to centralized gateway.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Security Hardening</strong>
+                            <p>Security hardening following best practices (fail2ban, IP whitelist, HSTS).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>User Training</strong>
+                            <p>Trained 50+ users and documented usage SOP.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Disaster Recovery</strong>
+                            <p>Set up automated MySQL backup for disaster recovery.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Log Management</strong>
+                            <p>Implemented log rotation for session recording files.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 10. Lessons Learned -->
+            <div class="detail-section">
+                <h2 class="section-heading"><span class="mono-text">10.</span> Lessons Learned</h2>
+                <ul class="detail-list">
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>WebSocket Support is Critical</strong>
+                            <p>WebSocket support in reverse proxy is critical — without it, Guacamole won't function.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Storage Management</strong>
+                            <p>Session recording consumes significant storage; requires clear retention policy (e.g., 30 days) and logrotate.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Authentication Scaling</strong>
+                            <p>Native database authentication is sufficient for small-to-medium scale, but large enterprises should consider LDAP/AD integration.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>User Adoption</strong>
+                            <p>User adoption requires good training; many initially resist because they're accustomed to RDP clients.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Fail2ban Configuration</strong>
+                            <p>Fail2ban is very effective at preventing brute force attacks, but needs internal IP whitelisting to avoid self-lockout.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Database Backup</strong>
+                            <p>MySQL database backup must be automated daily — it contains all connection & user configurations.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Performance Tuning</strong>
+                            <p>Tomcat performance tuning (max threads, connection pool) is important when users exceed 50 concurrent.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Connection Mapping</strong>
+                            <p>Connection mapping documentation (who accesses what) is very helpful during troubleshooting.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
 
         </div>
@@ -195,6 +515,10 @@
         </div>
     </footer>
 
+    <!-- Force Justify Script -->
+    <script src="js/force-justify.js"></script>
+
+    <!-- Mobile Menu Script -->
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -205,7 +529,5 @@
             else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
         });
     </script>
-    <!-- Force Justify Script -->
-    <script src="js/force-justify.js"></script>    
 </body>
 </html>
